@@ -31,6 +31,8 @@ def run_ingestion(
     image_dir = corpus_dir / doc_id
     raw_pages = pdf_extractor.extract(pdf_bytes, doc_id=doc_id, image_output_dir=image_dir)
 
+    resolved_ocr = ocr_fallback or OcrFallback()
+
     pages: list[Page] = []
     for raw_page in raw_pages:
         if raw_page.has_text_layer:
@@ -43,7 +45,6 @@ def run_ingestion(
                 )
             )
         else:
-            resolved_ocr = ocr_fallback or OcrFallback()
             ocr_text = resolved_ocr.read_text(raw_page.image_path)
             pages.append(
                 Page(
