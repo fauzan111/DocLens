@@ -2,6 +2,7 @@ from pathlib import Path
 
 import typer
 
+from doclens.ingest.dataset_card import generate_dataset_card
 from doclens.ingest.models import License
 from doclens.ingest.pipeline import run_ingestion
 from doclens.ingest.registry import SourceRegistry
@@ -27,6 +28,17 @@ def ingest(
         registry=registry,
     )
     typer.echo(f"Ingested '{document.title}' -> {document.doc_id} ({len(document.pages)} pages)")
+
+
+@app.command(name="dataset-card")
+def dataset_card(
+    corpus_dir: Path = typer.Option(Path("corpus"), help="Corpus directory to summarize"),
+) -> None:
+    registry = SourceRegistry(registry_path=corpus_dir / "registry.json")
+    card = generate_dataset_card(corpus_dir=corpus_dir, registry=registry)
+    output_path = corpus_dir / "DATASET_CARD.md"
+    output_path.write_text(card, encoding="utf-8")
+    typer.echo(f"Wrote dataset card to {output_path}")
 
 
 if __name__ == "__main__":
