@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doclens"
+version = "0.1.0"
+description = "DocLens: Multimodal RAG for technical documentation"
+requires-python = ">=3.9"
+dependencies = [
+    "pydantic>=2.0",
+]
+
+[tool.setuptools]
+packages = ["doclens", "doclens.ingest"]
+
+[tool.setuptools.package-dir]
+"" = "src"
