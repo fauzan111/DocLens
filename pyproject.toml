@@ -9,6 +9,7 @@ description = "DocLens: Multimodal RAG for technical documentation"
 requires-python = ">=3.11"
 dependencies = [
     "pydantic>=2.0",
+    "pymupdf>=1.24.0",
 ]
 
 [tool.setuptools]
