@@ -7,7 +7,7 @@ Each manifest entry is a JSON object: {"title": str, "source_url": str,
 "license": str (a doclens.ingest.models.License value), "language": str
 (informational only, not currently stored per-document)}.
 
-Downloads are not committed to git (see .gitignore's `corpus/` entry) — this
+Downloads are not committed to git (see .gitignore's `corpus/` entry); this
 script is what reproduces the corpus from the manifest, which IS committed.
 """
 
@@ -64,13 +64,13 @@ def seed(manifest_path: Path, corpus_dir: Path) -> None:
                 corpus_dir=corpus_dir,
                 registry=registry,
             )
-        except Exception as exc:  # noqa: BLE001 — report and continue past a single bad PDF
+        except Exception as exc:  # noqa: BLE001 - report and continue past a single bad PDF
             print(f"  INGESTION FAILED: {exc}")
             failed.append((title, str(exc)))
             continue
 
         ocr_pages = sum(1 for page in document.pages if page.text_source == "ocr")
-        print(f"  OK — {document.doc_id[:12]}... ({len(document.pages)} pages, {ocr_pages} OCR'd)")
+        print(f"  OK: {document.doc_id[:12]}... ({len(document.pages)} pages, {ocr_pages} OCR'd)")
         succeeded += 1
 
     print(f"\n{succeeded}/{len(entries)} documents ingested.")

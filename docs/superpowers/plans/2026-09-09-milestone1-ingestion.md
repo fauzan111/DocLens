@@ -3,8 +3,8 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the ingestion pipeline that turns a folder of sourced PDFs into a structured,
-licensed corpus — per-page text (with OCR fallback for scanned/no-text-layer pages), per-page
-images, and a generated dataset card — ready for the three retrieval systems built in Milestone 2.
+licensed corpus: per-page text (with OCR fallback for scanned/no-text-layer pages), per-page
+images, and a generated dataset card: ready for the three retrieval systems built in Milestone 2.
 
 **Architecture:** A typed domain model (`Document`, `Page`, `SourceRecord`) backs a small
 pipeline: a `SourceRegistry` records provenance/license/hash for every sourced PDF and rejects
@@ -18,11 +18,11 @@ Typer (CLI), hashlib (SHA-256 content addressing).
 
 ## Global Constraints
 
-- No Anthropic/Claude API calls anywhere in this pipeline — ingestion must run at $0 ongoing
+- No Anthropic/Claude API calls anywhere in this pipeline: ingestion must run at $0 ongoing
   cost (per DESIGN.md "Stack" section).
 - Corpus is bilingual IT/EN; nothing in ingestion may assume a single language.
 - Every sourced document must have a recorded source URL, license, and retrieval date before it
-  is usable — undocumented documents are rejected, not silently skipped.
+  is usable: undocumented documents are rejected, not silently skipped.
 - No confidential or employer (GEKO) data may enter the corpus.
 - Content-addressed by SHA-256: re-ingesting the same file content under a different name must
   not create a duplicate entry (mirrors TrustGate's immutable-registry pattern).
@@ -227,7 +227,7 @@ git commit -m "feat(ingest): add typed domain models for documents, pages, and s
 - Consumes: `SourceRecord`, `License` from `doclens.ingest.models`
 - Produces: `SourceRegistry(registry_path: Path)` with methods
   `register(source_url: str, license: License, file_bytes: bytes) -> tuple[SourceRecord, bool]`
-  (returns `(record, is_new)`; `is_new=False` if the SHA-256 already exists — same content is
+  (returns `(record, is_new)`; `is_new=False` if the SHA-256 already exists: same content is
   never duplicated even under a different URL/name) and `all_records() -> list[SourceRecord]`.
   Registry persists to a JSON file at `registry_path` (list of `SourceRecord`, one entry per
   unique `sha256`).
@@ -366,7 +366,7 @@ git commit -m "feat(ingest): add content-addressed source registry with dedup"
   `extract(pdf_bytes: bytes, doc_id: str, image_output_dir: Path) -> list[RawPage]`, where
   `RawPage = NamedTuple("RawPage", [("page_number", int), ("text", str), ("has_text_layer",
   bool), ("image_path", Path)])`. Renders each page to `image_output_dir / f"page-{n}.png"` at
-  150 DPI. `has_text_layer=False` when extracted text is empty/whitespace-only after stripping —
+  150 DPI. `has_text_layer=False` when extracted text is empty/whitespace-only after stripping:
   this is the signal Task 4's OCR fallback acts on.
 
 - [ ] **Step 1: Write the failing test**
@@ -505,7 +505,7 @@ git commit -m "feat(ingest): add PyMuPDF-based text and page-image extraction"
 - Test: `tests/ingest/test_ocr_fallback.py`
 
 **Interfaces:**
-- Consumes: nothing from earlier tasks directly (operates on an image path — Task 5 wires it to
+- Consumes: nothing from earlier tasks directly (operates on an image path: Task 5 wires it to
   `RawPage.image_path` for pages where `has_text_layer is False`).
 - Produces: `OcrFallback(languages: list[str] = ["en", "it"])` with method
   `read_text(image_path: Path) -> str`. Lazily loads the EasyOCR reader on first call (not in
@@ -576,7 +576,7 @@ class OcrFallback:
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `pytest tests/ingest/test_ocr_fallback.py -v -m "not slow"`
-Expected: PASS (1 passed — the fast init test; the `slow` test is opt-in since it downloads
+Expected: PASS (1 passed: the fast init test; the `slow` test is opt-in since it downloads
 EasyOCR's model weights on first run)
 
 Register the `slow` marker in `pyproject.toml` (Task 5's setup covers `pyproject.toml`
