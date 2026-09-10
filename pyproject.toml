@@ -13,13 +13,14 @@ dependencies = [
     "easyocr>=1.7",
     "typer>=0.12",
     "rank-bm25>=0.2",
+    "sentence-transformers>=3.0",
 ]
 
 [project.scripts]
 doclens = "doclens.cli:app"
 
 [tool.setuptools]
-packages = ["doclens", "doclens.ingest", "doclens.retrieval"]
+packages = ["doclens", "doclens.ingest", "doclens.retrieval", "doclens.embed"]
 
 [tool.setuptools.package-dir]
 "" = "src"
