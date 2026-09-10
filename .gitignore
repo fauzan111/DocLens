@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+*.txt.bak
+test_output.txt
+
+# Ingested corpus is regenerable from source PDFs + registry, and can be large
+corpus/
