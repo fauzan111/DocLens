@@ -21,6 +21,15 @@ class SourceRecord(BaseModel):
     retrieved_at: datetime
     sha256: str
 
+    @field_validator("source_url")
+    @classmethod
+    def source_url_must_be_valid_http_url(cls, value: str) -> str:
+        if not value or not value.strip():
+            raise ValueError("source_url cannot be empty or whitespace-only")
+        if not (value.startswith("http://") or value.startswith("https://")):
+            raise ValueError("source_url must start with http:// or https://")
+        return value
+
     @field_validator("sha256")
     @classmethod
     def sha256_must_be_64_hex_chars(cls, value: str) -> str:

@@ -55,3 +55,63 @@ def test_document_rejects_doc_id_mismatch_with_source_sha256():
     )
     with pytest.raises(ValidationError):
         Document(doc_id="d" * 64, title="Pump Manual", source=record, pages=[])
+
+
+def test_source_record_accepts_valid_https_url():
+    record = SourceRecord(
+        source_url="https://example.com/manual.pdf",
+        license=License.PUBLIC_DOMAIN,
+        retrieved_at=datetime(2026, 9, 9, tzinfo=timezone.utc),
+        sha256="a" * 64,
+    )
+    assert record.source_url == "https://example.com/manual.pdf"
+
+
+def test_source_record_accepts_valid_http_url():
+    record = SourceRecord(
+        source_url="http://example.com/manual.pdf",
+        license=License.PUBLIC_DOMAIN,
+        retrieved_at=datetime(2026, 9, 9, tzinfo=timezone.utc),
+        sha256="a" * 64,
+    )
+    assert record.source_url == "http://example.com/manual.pdf"
+
+
+def test_source_record_rejects_empty_source_url():
+    with pytest.raises(ValidationError):
+        SourceRecord(
+            source_url="",
+            license=License.PUBLIC_DOMAIN,
+            retrieved_at=datetime(2026, 9, 9, tzinfo=timezone.utc),
+            sha256="a" * 64,
+        )
+
+
+def test_source_record_rejects_whitespace_only_source_url():
+    with pytest.raises(ValidationError):
+        SourceRecord(
+            source_url="   ",
+            license=License.PUBLIC_DOMAIN,
+            retrieved_at=datetime(2026, 9, 9, tzinfo=timezone.utc),
+            sha256="a" * 64,
+        )
+
+
+def test_source_record_rejects_non_http_source_url():
+    with pytest.raises(ValidationError):
+        SourceRecord(
+            source_url="n/a",
+            license=License.PUBLIC_DOMAIN,
+            retrieved_at=datetime(2026, 9, 9, tzinfo=timezone.utc),
+            sha256="a" * 64,
+        )
+
+
+def test_source_record_rejects_ftp_source_url():
+    with pytest.raises(ValidationError):
+        SourceRecord(
+            source_url="ftp://example.com/file.txt",
+            license=License.PUBLIC_DOMAIN,
+            retrieved_at=datetime(2026, 9, 9, tzinfo=timezone.utc),
+            sha256="a" * 64,
+        )
