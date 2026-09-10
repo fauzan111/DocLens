@@ -24,25 +24,25 @@ class VectorStore:
         from qdrant_client.models import Distance, PointStruct, VectorParams
 
         self._ensure_client()
-        self._client.recreate_collection(
-            collection_name=self.collection_name,
-            vectors_config=VectorParams(size=self.vector_size, distance=Distance.COSINE),
-        )
-        points = [
-            PointStruct(id=index, vector=embedding, payload={"chunk_id": chunk_id})
-            for index, (chunk_id, embedding) in enumerate(zip(chunk_ids, embeddings))
-        ]
-        self._client.upsert(collection_name=self.collection_name, points=points)
-        self._close_client()
+        try:
+            self._client.recreate_collection(
+                collection_name=self.collection_name,
+                vectors_config=VectorParams(size=self.vector_size, distance=Distance.COSINE),
+            )
+            points = [
+                PointStruct(id=index, vector=embedding, payload={"chunk_id": chunk_id})
+                for index, (chunk_id, embedding) in enumerate(zip(chunk_ids, embeddings))
+            ]
+            self._client.upsert(collection_name=self.collection_name, points=points)
+        finally:
+            self._close_client()
 
     def search(self, query_embedding: list[float], top_k: int = 10) -> list[tuple[str, float]]:
         self._ensure_client()
         results = self._client.search(
             collection_name=self.collection_name, query_vector=query_embedding, limit=top_k
         )
-        results_list = [(hit.payload["chunk_id"], hit.score) for hit in results]
-        self._close_client()
-        return results_list
+        return [(hit.payload["chunk_id"], hit.score) for hit in results]
 
     def __del__(self):
         self._close_client()

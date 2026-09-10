@@ -36,3 +36,20 @@ def test_vector_store_persists_across_instances(tmp_path: Path):
 
     assert len(results) == 1
     assert results[0][0] == "x"
+
+
+def test_repeated_search_on_same_instance(tmp_path: Path):
+    store = VectorStore(path=tmp_path / "index", vector_size=4)
+    chunk_ids = ["a", "b", "c"]
+    embeddings = [
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0],
+    ]
+    store.build(chunk_ids, embeddings)
+
+    first_results = store.search([0.9, 0.1, 0.0, 0.0], top_k=1)
+    second_results = store.search([0.0, 0.0, 0.9, 0.1], top_k=1)
+
+    assert first_results[0][0] == "a"
+    assert second_results[0][0] == "c"
