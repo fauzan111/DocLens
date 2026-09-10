@@ -34,9 +34,17 @@ doclens ingest --pdf manual.pdf --source-url https://example.com/manual.pdf \
 doclens dataset-card --corpus-dir corpus
 ```
 
-**Next:** sourcing a real corpus of public manufacturer manuals/datasheets, then Milestone 2
-(text-only hybrid retrieval baseline) and Milestone 3 (the multimodal retrieval arms + full
-benchmark comparison).
+A small real, bilingual (IT/EN) seed corpus — public manufacturer pump and PLC manuals — is
+tracked as a manifest at [`data/seed_manifest.json`](data/seed_manifest.json) and reproduced
+locally with:
+
+```bash
+python scripts/seed_corpus.py   # downloads + ingests into corpus/ (gitignored, regenerable)
+```
+
+**Next:** grow the seed corpus toward the target 150-250 documents, then Milestone 2 (text-only
+hybrid retrieval baseline) and Milestone 3 (the multimodal retrieval arms + full benchmark
+comparison).
 
 ## Run the tests
 
