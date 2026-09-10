@@ -1,0 +1,62 @@
+[
+  {
+    "title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+    "source_url": "https://www.pumpworks.com/wp-content/uploads/2017/12/PWI_IOM.pdf",
+    "license": "manufacturer_public",
+    "language": "en"
+  },
+  {
+    "title": "Goulds Pumps Model 3755 Installation, Operation and Maintenance Manual (EN)",
+    "source_url": "https://www.gouldspumps.com/getmedia/27fb8046-bba0-4c9f-9b3f-8a0552c0dfbf/Goulds-3775.pdf",
+    "license": "manufacturer_public",
+    "language": "en"
+  },
+  {
+    "title": "BJM Pumps Fahrenheit Series Installation, Operation & Maintenance Manual",
+    "source_url": "https://flowsolutions.com/wp-content/uploads/2020/09/IFS-BJM-SKFSKXFseries-OperationManual.pdf",
+    "license": "manufacturer_public",
+    "language": "en"
+  },
+  {
+    "title": "Rockwell Automation Sensor Technology and Application Basics Reference Manual",
+    "source_url": "https://literature.rockwellautomation.com/idc/groups/literature/documents/rm/c117-rm001_-en-p.pdf",
+    "license": "manufacturer_public",
+    "language": "en"
+  },
+  {
+    "title": "AutomationDirect Practical Guide to Programmable Logic Controllers (PLC Handbook)",
+    "source_url": "https://cdn.automationdirect.com/static/eBooks/PLC%20Handbook.pdf",
+    "license": "manufacturer_public",
+    "language": "en"
+  },
+  {
+    "title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+    "source_url": "https://docs.arduino.cc/resources/datasheets/AFX00001-AFX00002-AFX00003-datasheet.pdf",
+    "license": "manufacturer_public",
+    "language": "en"
+  },
+  {
+    "title": "Pedrollo PRO-DG Manuale di Installazione e Manutenzione",
+    "source_url": "https://www.pedrollo.com/wp-content/uploads/2024/05/PRO-DG_Manuale-istruzione_07-23.pdf",
+    "license": "manufacturer_public",
+    "language": "it"
+  },
+  {
+    "title": "DAB Pumps Serie FK Istruzioni per l'Installazione e la Manutenzione",
+    "source_url": "https://dna.dabpumps.com/dat/Docs/DAB/EN/Cod_60172402.pdf",
+    "license": "manufacturer_public",
+    "language": "it"
+  },
+  {
+    "title": "Goulds Pumps Manuale di Installazione, Uso e Manutenzione (IT)",
+    "source_url": "https://www.gouldspumps.com/getmedia/ccd67fcb-d4f7-457e-a1e9-992cc6a752a1/IOM_IC_it_IT.pdf",
+    "license": "manufacturer_public",
+    "language": "it"
+  },
+  {
+    "title": "Enerpac Manuale d'Uso e Manutenzione Pompa Idraulica",
+    "source_url": "https://literature.enerpac.com/pdf/L4447_d_IT.pdf",
+    "license": "manufacturer_public",
+    "language": "it"
+  }
+]

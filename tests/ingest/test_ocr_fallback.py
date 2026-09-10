@@ -28,3 +28,59 @@ def test_ocr_fallback_does_not_load_model_on_init():
     # Constructing OcrFallback must not attempt any network/model download.
     ocr = OcrFallback(languages=["en"])
     assert ocr._reader is None
+
+
+class _FakeStream:
+    """Mimics enough of a text stream to exercise the reconfigure() guard."""
+
+    def __init__(self, encoding: str):
+        self.encoding = encoding
+        self.reconfigure_calls: list[dict] = []
+
+    def reconfigure(self, **kwargs):
+        self.reconfigure_calls.append(kwargs)
+
+
+class _FakeEasyocrReader:
+    def __init__(self, languages, gpu):
+        pass
+
+    def readtext(self, image_path, detail=0):
+        return ["stub"]
+
+
+def _install_fake_easyocr(monkeypatch):
+    import sys
+    import types
+
+    fake_module = types.ModuleType("easyocr")
+    fake_module.Reader = _FakeEasyocrReader
+    monkeypatch.setitem(sys.modules, "easyocr", fake_module)
+
+
+def test_read_text_reconfigures_non_utf8_stdout_and_stderr(monkeypatch, tmp_path):
+    _install_fake_easyocr(monkeypatch)
+    fake_stdout = _FakeStream("cp1252")
+    fake_stderr = _FakeStream("cp1252")
+    monkeypatch.setattr("sys.stdout", fake_stdout)
+    monkeypatch.setattr("sys.stderr", fake_stderr)
+
+    ocr = OcrFallback(languages=["en"])
+    ocr.read_text(tmp_path / "page.png")
+
+    assert fake_stdout.reconfigure_calls == [{"encoding": "utf-8", "errors": "replace"}]
+    assert fake_stderr.reconfigure_calls == [{"encoding": "utf-8", "errors": "replace"}]
+
+
+def test_read_text_does_not_reconfigure_already_utf8_streams(monkeypatch, tmp_path):
+    _install_fake_easyocr(monkeypatch)
+    fake_stdout = _FakeStream("utf-8")
+    fake_stderr = _FakeStream("utf-8")
+    monkeypatch.setattr("sys.stdout", fake_stdout)
+    monkeypatch.setattr("sys.stderr", fake_stderr)
+
+    ocr = OcrFallback(languages=["en"])
+    ocr.read_text(tmp_path / "page.png")
+
+    assert fake_stdout.reconfigure_calls == []
+    assert fake_stderr.reconfigure_calls == []
