@@ -25,4 +25,4 @@ class Bm25Index:
 
         scores = self._bm25.get_scores(_tokenize(query))
         ranked = sorted(zip(self._chunk_ids, scores), key=lambda pair: pair[1], reverse=True)
-        return [(chunk_id, float(score)) for chunk_id, score in ranked[:top_k] if score != 0]
+        return [(chunk_id, float(score)) for chunk_id, score in ranked[:top_k] if score > 0]

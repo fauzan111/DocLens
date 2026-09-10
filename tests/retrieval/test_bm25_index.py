@@ -41,7 +41,13 @@ def test_search_returns_no_results_for_completely_unrelated_query():
 
 
 def test_search_respects_top_k():
-    chunks = [_chunk(f"c{i}", "torque torque torque bolt") for i in range(5)]
+    chunks = [
+        _chunk("c0", "The pump requires a torque of 45 Nm on the flange bolts."),
+        _chunk("c1", "Tighten the mounting bolts to the specified torque rating."),
+        _chunk("c2", "Ambient temperature must remain between 5 and 40 degrees Celsius."),
+        _chunk("c3", "Voltage tolerance is plus or minus ten percent of nominal."),
+        _chunk("c4", "Replace the filter cartridge every six months of operation."),
+    ]
     index = Bm25Index()
     index.build(chunks)
 
