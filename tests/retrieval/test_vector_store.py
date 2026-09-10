@@ -49,7 +49,9 @@ def test_repeated_search_on_same_instance(tmp_path: Path):
     store.build(chunk_ids, embeddings)
 
     first_results = store.search([0.9, 0.1, 0.0, 0.0], top_k=1)
+    client_after_first_search = store._client
     second_results = store.search([0.0, 0.0, 0.9, 0.1], top_k=1)
 
     assert first_results[0][0] == "a"
     assert second_results[0][0] == "c"
+    assert store._client is client_after_first_search
