@@ -9,6 +9,8 @@ from doclens.retrieval.models import Chunk
 from doclens.retrieval.reranker import CrossEncoderReranker
 from doclens.retrieval.vector_store import VectorStore
 
+_UNSET = object()
+
 
 def _load_all_chunks(corpus_dir: Path) -> list[Chunk]:
     chunks: list[Chunk] = []
@@ -39,7 +41,7 @@ class TextOnlyRetriever:
         index_dir: Path,
         embedder: TextEmbedder | None = None,
         vector_store: VectorStore | None = None,
-        reranker: CrossEncoderReranker | None = None,
+        reranker: CrossEncoderReranker | None = _UNSET,
     ):
         self.chunks = _load_all_chunks(corpus_dir)
         self.chunk_by_id = {chunk.chunk_id: chunk for chunk in self.chunks}
@@ -49,7 +51,11 @@ class TextOnlyRetriever:
 
         self.embedder = embedder or TextEmbedder()
         self.vector_store = vector_store or VectorStore(path=index_dir)
-        self.reranker = reranker if reranker is not None else CrossEncoderReranker()
+        # Distinguish "caller didn't pass reranker" (auto-create a real CrossEncoderReranker)
+        # from "caller explicitly passed reranker=None" (genuinely disable reranking). Using
+        # a sentinel default instead of None avoids a real model download in tests that pass
+        # reranker=None to exercise the fused-order fallback in retrieve().
+        self.reranker = CrossEncoderReranker() if reranker is _UNSET else reranker
 
     def retrieve(self, query: str, top_k: int = 5, fusion_pool: int = 20) -> list[tuple[Chunk, float]]:
         bm25_results = self.bm25.search(query, top_k=fusion_pool)
