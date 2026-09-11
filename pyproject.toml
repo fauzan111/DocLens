@@ -12,13 +12,17 @@ dependencies = [
     "pymupdf>=1.24.0",
     "easyocr>=1.7",
     "typer>=0.12",
+    "rank-bm25>=0.2",
+    "sentence-transformers>=3.0",
+    "qdrant-client>=1.9,<1.10",
+    "google-generativeai>=0.8",
 ]
 
 [project.scripts]
 doclens = "doclens.cli:app"
 
 [tool.setuptools]
-packages = ["doclens", "doclens.ingest"]
+packages = ["doclens", "doclens.ingest", "doclens.retrieval", "doclens.embed", "doclens.generation"]
 
 [tool.setuptools.package-dir]
 "" = "src"
