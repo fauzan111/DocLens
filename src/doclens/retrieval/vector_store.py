@@ -38,7 +38,14 @@ class VectorStore:
             self._close_client()
 
     def search(self, query_embedding: list[float], top_k: int = 10) -> list[tuple[str, float]]:
+        if not self.path.exists():
+            raise RuntimeError(f"No index found at {self.path}. Run 'doclens build-index' first.")
+
         self._ensure_client()
+
+        if not self._client.collection_exists(self.collection_name):
+            raise RuntimeError(f"No index found at {self.path}. Run 'doclens build-index' first.")
+
         results = self._client.search(
             collection_name=self.collection_name, query_vector=query_embedding, limit=top_k
         )

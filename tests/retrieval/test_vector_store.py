@@ -55,3 +55,24 @@ def test_repeated_search_on_same_instance(tmp_path: Path):
     assert first_results[0][0] == "a"
     assert second_results[0][0] == "c"
     assert store._client is client_after_first_search
+
+
+def test_search_on_nonexistent_index_raises_clear_error(tmp_path: Path):
+    store = VectorStore(path=tmp_path / "nonexistent_index", vector_size=4)
+
+    with pytest.raises(RuntimeError, match="No index found.*build-index"):
+        store.search([1.0, 0.0, 0.0, 0.0], top_k=1)
+
+    assert not (tmp_path / "nonexistent_index").exists()
+
+
+def test_search_on_nonexistent_index_does_not_create_directory(tmp_path: Path):
+    index_path = tmp_path / "index_not_yet_built"
+    store = VectorStore(path=index_path, vector_size=4)
+
+    try:
+        store.search([1.0, 0.0, 0.0, 0.0], top_k=1)
+    except RuntimeError:
+        pass
+
+    assert not index_path.exists()
