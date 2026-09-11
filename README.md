@@ -34,17 +34,35 @@ doclens ingest --pdf manual.pdf --source-url https://example.com/manual.pdf \
 doclens dataset-card --corpus-dir corpus
 ```
 
-A small real, bilingual (IT/EN) seed corpus of public manufacturer pump and PLC manuals is
-tracked as a manifest at [`data/seed_manifest.json`](data/seed_manifest.json) and reproduced
-locally with:
+A real, bilingual (IT/EN) seed corpus of public manufacturer manuals (pumps, valves,
+compressors, PLCs, drives, HVAC, safety equipment) is tracked as a manifest at
+[`data/seed_manifest.json`](data/seed_manifest.json) (28 documents, ~2,600 pages as of this
+writing) and reproduced locally with:
 
 ```bash
 python scripts/seed_corpus.py   # downloads + ingests into corpus/ (gitignored, regenerable)
 ```
 
-**Next:** grow the seed corpus toward the target 150-250 documents, then Milestone 2 (text-only
-hybrid retrieval baseline) and Milestone 3 (the multimodal retrieval arms + full benchmark
-comparison).
+**Milestone 2, text-only hybrid retrieval baseline (done).** Chunks the corpus page-scoped,
+indexes it with BM25 (lexical) and a multilingual dense embedder, fuses both with reciprocal
+rank fusion, reranks with a multilingual cross-encoder, and optionally generates a grounded,
+cited answer via Gemini's free tier:
+
+```bash
+doclens build-index --corpus-dir corpus --index-dir index
+doclens query "what torque should be used on the flange bolts" --corpus-dir corpus --index-dir index
+doclens query "cosa fare in caso di sovraccarico del motore" --corpus-dir corpus --index-dir index --answer
+```
+
+This is the "floor" baseline: what everyone already builds, measured honestly. A real smoke test
+against the seed corpus already surfaced a genuine, disclosed limitation (an English query about
+flange-bolt torque returned topically-adjacent-but-imprecise results, while an Italian query
+returned clearly relevant ones) rather than hiding it, exactly the kind of failure-mode evidence
+this project is meant to produce.
+
+**Next:** grow the seed corpus further, then Milestone 3 (the multimodal retrieval arms:
+caption-and-index and unified vision embedding, plus the full 200-300 question benchmark
+comparing all systems head-to-head).
 
 ## Run the tests
 
@@ -61,11 +79,13 @@ pytest tests/ -v -m "not slow"
 ```
 src/doclens/
   ingest/       models, source registry, PDF extraction, OCR fallback, pipeline (done)
-  embed/        text + vision embedders (Milestone 2/3)
-  retrieval/    the three retrieval systems compared head-to-head (Milestone 2/3)
+  embed/        text embedder (done); vision embedder (Milestone 3)
+  retrieval/    chunker, BM25, vector store, hybrid fusion, reranker, pipeline (done);
+                caption-and-index + vision-embedding arms (Milestone 3)
+  generation/   Gemini answer generator with citations (done)
   eval/         benchmark loader, metrics, failure-taxonomy report (Milestone 3)
   api/          FastAPI query endpoint
-  cli.py        `doclens ingest`, `doclens dataset-card`
+  cli.py        `doclens ingest`, `dataset-card`, `build-index`, `query`
 benchmarks/doclens-bench/   versioned question set, dev/hidden split (Milestone 3)
 ```
 
