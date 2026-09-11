@@ -1,92 +1,134 @@
 # DocLens
 
-**Multimodal RAG for industrial technical documents: does indexing page images and tables
-actually beat text-only RAG, and where does it not?**
+**A retrieval-augmented question-answering system for industrial technical documents, built to
+measure whether reading page images and tables actually improves answers over reading text
+alone, and where it doesn't.**
 
-An Italian manufacturing SME has years of equipment manuals, datasheets, and spec sheets, mostly
-scanned or mixed-format PDFs full of tables, wiring diagrams, and photos. Staff search by keyword
-and miss answers that live in a table or diagram rather than a sentence.
+## The problem
 
-> Research question: how much does retrieval quality improve when a RAG system indexes page
-> images and tables directly, instead of only extracted text, and on which question types does
-> it *not* help, given the added cost and complexity?
+Manufacturing companies sit on years of equipment manuals, datasheets, and spec sheets, most of
+them scanned or mixed-format PDFs full of tables, wiring diagrams, and photos. Staff search by
+keyword and routinely miss answers that live in a table or a diagram rather than a sentence: a
+torque spec in a parts table, a wiring color code in a diagram, a limit value buried in a scanned
+page that never made it through OCR cleanly.
 
-See [`DESIGN.md`](DESIGN.md) for the full architecture: three retrieval systems (text-only
-hybrid baseline, caption-and-index, unified vision embedding) compared head-to-head on the same
-bilingual (IT/EN) benchmark, with a documented failure taxonomy as the actual deliverable, not
-a single accuracy number.
+DocLens ingests a library of these documents, indexes them, and answers natural-language
+questions in English or Italian with citations back to the exact source page. Rather than just
+shipping "a RAG system," the project is built to answer a specific, measurable question:
 
-## Status
+> How much does retrieval quality actually improve when a system indexes page images and tables
+> directly, instead of only text extracted via OCR, and on which kinds of questions does it not
+> help, given the added cost and complexity?
 
-**Milestone 1, corpus + ingestion (done).** A typed pipeline turns sourced PDFs into a
-licensed, versioned corpus:
+Most RAG demos never measure this. DocLens is built to.
 
-- Content-addressed source registry (SHA-256 dedup; the same file under a different URL is
-  never re-ingested)
-- PyMuPDF-based per-page text extraction + page-image rendering
-- EasyOCR fallback for scanned pages with no text layer
-- A dataset card summarizing license and OCR coverage
+## How it works
+
+**1. Ingestion.** PDFs are parsed page by page: text is extracted where a text layer exists, and
+EasyOCR fills in the gap for scanned pages that have none. Every page is also rendered to an
+image. Every source document is recorded with its origin URL, license, and retrieval date, and
+content-addressed by SHA-256 so the same file can never be silently duplicated under a different
+name.
+
+**2. Chunking and indexing.** Extracted text is split into page-scoped chunks (a chunk never
+spans two pages, so a citation always points at one real page) and indexed two ways in parallel:
+a classic BM25 lexical index, and a dense vector index built from multilingual sentence
+embeddings. The two are combined with reciprocal rank fusion, then reranked with a multilingual
+cross-encoder for the final result set.
+
+**3. Answering.** The top reranked passages are handed to an LLM (Gemini, on its free tier) with
+an instruction to answer only from the provided context and say so when it can't. Every answer
+comes back with citations to the specific document and page it drew from.
+
+**4. What's coming next.** The text pipeline above is the baseline, deliberately built first so
+it can be measured, not assumed. The next phase adds two more ways of indexing the same
+documents: captioning tables and diagrams with a vision-capable model before indexing them as
+text, and embedding page images directly so retrieval never depends on text extraction succeeding
+at all. All three approaches will be benchmarked head-to-head on the same set of real questions,
+including ones that specifically require reading a table, a diagram, or a scanned page with no
+usable text layer, and the results, including where the extra complexity does *not* pay off, will
+be published as part of this repository. See [`DESIGN.md`](DESIGN.md) for the full technical
+design.
+
+## Corpus
+
+The system ships with a real, bilingual (Italian/English) seed corpus of publicly available
+manufacturer manuals and datasheets: pumps, valves, compressors, PLCs and drives, motors, HVAC
+equipment, and safety gear, sourced from manufacturer websites (28 documents, ~2,600 pages as of
+this writing). Every document's source URL, license, and retrieval date is tracked in
+[`data/seed_manifest.json`](data/seed_manifest.json), and the corpus is fully reproducible from
+that manifest rather than checked into the repository directly.
+
+## Getting started
+
+Install the package:
 
 ```bash
 pip install -e .
-doclens ingest --pdf manual.pdf --source-url https://example.com/manual.pdf \
-  --license manufacturer_public --title "Pump Manual" --corpus-dir corpus
+```
+
+Build the seed corpus (downloads and ingests the manifest's real PDFs; this can take a few
+minutes on first run):
+
+```bash
+python scripts/seed_corpus.py
+```
+
+Check what got ingested:
+
+```bash
 doclens dataset-card --corpus-dir corpus
 ```
 
-A real, bilingual (IT/EN) seed corpus of public manufacturer manuals (pumps, valves,
-compressors, PLCs, drives, HVAC, safety equipment) is tracked as a manifest at
-[`data/seed_manifest.json`](data/seed_manifest.json) (28 documents, ~2,600 pages as of this
-writing) and reproduced locally with:
-
-```bash
-python scripts/seed_corpus.py   # downloads + ingests into corpus/ (gitignored, regenerable)
-```
-
-**Milestone 2, text-only hybrid retrieval baseline (done).** Chunks the corpus page-scoped,
-indexes it with BM25 (lexical) and a multilingual dense embedder, fuses both with reciprocal
-rank fusion, reranks with a multilingual cross-encoder, and optionally generates a grounded,
-cited answer via Gemini's free tier:
+Build the search index:
 
 ```bash
 doclens build-index --corpus-dir corpus --index-dir index
+```
+
+Ask it a question:
+
+```bash
 doclens query "what torque should be used on the flange bolts" --corpus-dir corpus --index-dir index
 doclens query "cosa fare in caso di sovraccarico del motore" --corpus-dir corpus --index-dir index --answer
 ```
 
-This is the "floor" baseline: what everyone already builds, measured honestly. A real smoke test
-against the seed corpus already surfaced a genuine, disclosed limitation (an English query about
-flange-bolt torque returned topically-adjacent-but-imprecise results, while an Italian query
-returned clearly relevant ones) rather than hiding it, exactly the kind of failure-mode evidence
-this project is meant to produce.
+The `--answer` flag additionally generates a grounded, cited answer via Gemini; without it, the
+command returns the raw ranked passages and their source pages. Generation requires a free
+`GEMINI_API_KEY` environment variable; retrieval alone does not.
 
-**Next:** grow the seed corpus further, then Milestone 3 (the multimodal retrieval arms:
-caption-and-index and unified vision embedding, plus the full 200-300 question benchmark
-comparing all systems head-to-head).
+To ingest your own documents instead of (or alongside) the seed corpus:
 
-## Run the tests
+```bash
+doclens ingest --pdf manual.pdf --source-url https://example.com/manual.pdf \
+  --license manufacturer_public --title "Pump Manual" --corpus-dir corpus
+```
+
+## Running the tests
 
 ```bash
 pip install -e ".[dev]"
 pytest tests/ -v -m "not slow"
 ```
 
-(The one `slow`-marked test downloads EasyOCR's model weights on first run; opt in with
-`pytest tests/ -v` if you want to exercise it.)
+A handful of tests are marked `slow` because they exercise real model downloads (OCR, embeddings,
+reranking) instead of stubs; they're skipped by default and can be run explicitly with
+`pytest tests/ -v`.
 
-## Layout
+## Project layout
 
 ```
 src/doclens/
-  ingest/       models, source registry, PDF extraction, OCR fallback, pipeline (done)
-  embed/        text embedder (done); vision embedder (Milestone 3)
-  retrieval/    chunker, BM25, vector store, hybrid fusion, reranker, pipeline (done);
-                caption-and-index + vision-embedding arms (Milestone 3)
-  generation/   Gemini answer generator with citations (done)
-  eval/         benchmark loader, metrics, failure-taxonomy report (Milestone 3)
-  api/          FastAPI query endpoint
-  cli.py        `doclens ingest`, `dataset-card`, `build-index`, `query`
-benchmarks/doclens-bench/   versioned question set, dev/hidden split (Milestone 3)
+  ingest/       PDF parsing, OCR fallback, the source registry, and the ingestion pipeline
+  embed/        the text embedding model wrapper
+  retrieval/    chunking, BM25, the vector store, hybrid fusion, reranking, and the retrieval pipeline
+  generation/   the answer generator and its citation/answer models
+  cli.py        the `doclens` command-line tool
 ```
 
-License: MIT (see [`LICENSE`](LICENSE)).
+A `benchmarks/` directory and evaluation/API layers are planned but not yet built; see
+[`DESIGN.md`](DESIGN.md) for the full plan.
+
+## License
+
+MIT (see [`LICENSE`](LICENSE)).
