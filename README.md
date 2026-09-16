@@ -40,15 +40,22 @@ cross-encoder for the final result set.
 an instruction to answer only from the provided context and say so when it can't. Every answer
 comes back with citations to the specific document and page it drew from.
 
-**4. What's coming next.** The text pipeline above is the baseline, deliberately built first so
+**4. Evaluation.** The whole point of this project is to measure retrieval quality honestly, not
+assume it. `doclens-bench` is a versioned set of real, source-grounded questions (every citation
+independently checked against the actual corpus) split into slices that isolate exactly what
+this project cares about: plain text lookups, table lookups, diagram lookups, scanned pages with
+no usable text layer, questions requiring more than one document, and questions the corpus
+genuinely doesn't answer. A held-out portion is frozen and never touched during development, so a
+reported score can't be quietly tuned to. See [`benchmarks/doclens-bench/DATASET_CARD.md`](benchmarks/doclens-bench/DATASET_CARD.md)
+for the current composition, including honestly-documented limitations.
+
+**5. What's coming next.** The text pipeline above is the baseline, deliberately built first so
 it can be measured, not assumed. The next phase adds two more ways of indexing the same
 documents: captioning tables and diagrams with a vision-capable model before indexing them as
 text, and embedding page images directly so retrieval never depends on text extraction succeeding
-at all. All three approaches will be benchmarked head-to-head on the same set of real questions,
-including ones that specifically require reading a table, a diagram, or a scanned page with no
-usable text layer, and the results, including where the extra complexity does *not* pay off, will
-be published as part of this repository. See [`DESIGN.md`](DESIGN.md) for the full technical
-design.
+at all. All three approaches will be run against `doclens-bench` head-to-head, and the results,
+including where the extra complexity does *not* pay off, will be published as part of this
+repository. See [`DESIGN.md`](DESIGN.md) for the full technical design.
 
 ## Corpus
 
@@ -123,11 +130,12 @@ src/doclens/
   embed/        the text embedding model wrapper
   retrieval/    chunking, BM25, the vector store, hybrid fusion, reranking, and the retrieval pipeline
   generation/   the answer generator and its citation/answer models
+  eval/         the benchmark schema, grounding validator, dev/hidden split, and dataset card
   cli.py        the `doclens` command-line tool
+benchmarks/doclens-bench/   the versioned, frozen evaluation question set and its dataset card
 ```
 
-A `benchmarks/` directory and evaluation/API layers are planned but not yet built; see
-[`DESIGN.md`](DESIGN.md) for the full plan.
+An API layer is planned but not yet built; see [`DESIGN.md`](DESIGN.md) for the full plan.
 
 ## License
 
