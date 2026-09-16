@@ -1,0 +1,972 @@
+[
+  {
+    "id": "bq-001",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "At what bearing housing temperature must a PumpWorks PWI pump be stopped immediately, per the manual?",
+    "expected_answer": "190 degrees F (88 degrees C)",
+    "sources": [
+      {
+        "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+        "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+        "page_number": 13
+      }
+    ],
+    "notes": "Direct prose statement, verified in extracted text."
+  },
+  {
+    "id": "bq-002",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "What is the IP degree of protection rating of the Arduino Opta PLC?",
+    "expected_answer": "IP20",
+    "sources": [
+      {
+        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+        "page_number": 5
+      }
+    ],
+    "notes": "Also repeated on page 8. Verified in extracted text (datasheet spec table)."
+  },
+  {
+    "id": "bq-003",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Qual e' la classe di protezione dei motori della pompa DAB serie FK, secondo la norma IEC 60529?",
+    "expected_answer": "IP68",
+    "sources": [
+      {
+        "doc_id": "3138d019696b33e11bfa29234c7df93f7cc1f8a4a51e3b5df8abe7ce2b5b1809",
+        "doc_title": "DAB Pumps Serie FK Istruzioni per l'Installazione e la Manutenzione",
+        "page_number": 7
+      }
+    ],
+    "notes": "Verified in extracted text: 'Classe di protezione: IP68. Secondo IEC 60529.'"
+  },
+  {
+    "id": "bq-004",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Qual e' la classe di isolamento dei motori della pompa DAB serie FK?",
+    "expected_answer": "Classe F (155 gradi C)",
+    "sources": [
+      {
+        "doc_id": "3138d019696b33e11bfa29234c7df93f7cc1f8a4a51e3b5df8abe7ce2b5b1809",
+        "doc_title": "DAB Pumps Serie FK Istruzioni per l'Installazione e la Manutenzione",
+        "page_number": 7
+      }
+    ],
+    "notes": "Verified in extracted text, same location as q013."
+  },
+  {
+    "id": "bq-005",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "What caution warning does the Interroll RM 8310/8320/8330 manual give about installing the finger guard (PolyVee guard) near the drive belt?",
+    "expected_answer": "It warns of a 'Risk of crushing from rotating parts' and instructs that before any assembly or maintenance work, the devices must be decommissioned and disconnected from the voltage supply, and secured against accidental activation.",
+    "sources": [
+      {
+        "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+        "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+        "page_number": 40
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-006",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Ogni quante ore di funzionamento va sostituito l'olio 'GSP High-Performance' nel compressore FIAC, secondo la tabella per la sostituzione dell'olio?",
+    "expected_answer": "Ogni 500 ore di funzionamento.",
+    "sources": [
+      {
+        "doc_id": "05823ea5c731d1145844d8addeffe73bb87e6e9d34ba0e732008597e750a0d28",
+        "doc_title": "FIAC Compressori Manuale d'Uso e Manutenzione",
+        "page_number": 9
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-007",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "What is the maximum permissible system impedance (Zmax) at the supply interface point for the Daikin EUWAC8 air-cooled water chiller?",
+    "expected_answer": "0.06 Ohm",
+    "sources": [
+      {
+        "doc_id": "1a51c24cc6caa499ccdf91783e38f22656b241fd9fee91aa976419d20c6c876f",
+        "doc_title": "Daikin EUWAC Air-Cooled Water Chillers Installation and Operation Manual",
+        "page_number": 8
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-008",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Qual e il diametro interno minimo richiesto per il tubo di drenaggio dell'umidificatore CAREL humiSteam x-plus, e a quale temperatura deve resistere?",
+    "expected_answer": "Diametro interno minimo di 40 mm (1.6 in), resistente a temperature di 100 C (212 F).",
+    "sources": [
+      {
+        "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+        "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+        "page_number": 10
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-009",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "What is the oil capacity for a Group L frame on the Goulds Pumps Model 3755?",
+    "expected_answer": "26 oz",
+    "sources": [
+      {
+        "doc_id": "411e81c6d2d42b97109254bca2603981fc03f3573650a6ba3c5e5e4386a042df",
+        "doc_title": "Goulds Pumps Model 3755 Installation, Operation and Maintenance Manual (EN)",
+        "page_number": 20
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-010",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Ogni quante ore deve essere sostituita la cartuccia dei filtri della pompa idraulica Enerpac, secondo il manuale?",
+    "expected_answer": "Ogni 250 ore di funzionamento (con maggiore frequenza se si lavora in ambienti sporchi).",
+    "sources": [
+      {
+        "doc_id": "4636e7b4c63a3b53b47cad6f74d78990d006bc679304b48ea7fbe5ac8a04a6a0",
+        "doc_title": "Enerpac Manuale d'Uso e Manutenzione Pompa Idraulica",
+        "page_number": 20
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-011",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "What range of values can be entered in the Calibration Interval (Cal Interval) field for the Force Calibration When Overdue setting on the GasAlertMicroClip detector?",
+    "expected_answer": "1 to 365 days (entering 0 automatically disables the Force Calibration When Overdue option).",
+    "sources": [
+      {
+        "doc_id": "4439687dfb25c2f3d72c1a5b380f3eb5bb88d5249c197f11fcd895d518d395be",
+        "doc_title": "Honeywell GasAlertMicroClip 1, 2, 3 and 4 Gas Detector User Manual",
+        "page_number": 30
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-012",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Qual e il grado di protezione IP del bruciatore Riello RS 45/M BLU?",
+    "expected_answer": "IP 44",
+    "sources": [
+      {
+        "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+        "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+        "page_number": 10
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-013",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "Before inserting a Bray resilient seated butterfly valve between pipe flanges, at approximately what angle should the disc be positioned open?",
+    "expected_answer": "Approximately 10 degrees open, with the disc edge about 1/2 inch to 3/8 inch inside the face of the seat.",
+    "sources": [
+      {
+        "doc_id": "44d688d6aafc10ca8bde3ba5b3440f33548a642af393da9a2f841b3373542caa",
+        "doc_title": "Bray Resilient Seated Butterfly Valves Installation, Operation and Maintenance Manual",
+        "page_number": 10
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-014",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Secondo la tabella di manutenzione OMAL, quante manovre (cicli) sono previste prima della sostituzione delle parti usurabili per le valvole a farfalla con DN compreso tra 40 e 80?",
+    "expected_answer": "100.000 manovre",
+    "sources": [
+      {
+        "doc_id": "f44000d8440373ab83211e1537d4b683cb39d695cc9e69cc94830c3248c502cd",
+        "doc_title": "OMAL Manuale di Istruzioni Valvole a Farfalla Serie 375-376-377/385-386-387",
+        "page_number": 7
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-015",
+    "slice": "answerable_text",
+    "language": "en",
+    "question": "What is the maximum tightening torque for the M12 x 35 bolt on the 800 A withdrawable apparatus unit main circuit connection in the ABB MNS switchgear?",
+    "expected_answer": "80 Nm",
+    "sources": [
+      {
+        "doc_id": "f7309f2bd6935148d577ec0e828dba560b43ce0aedc3e5ddab1c783d7d014502",
+        "doc_title": "ABB MNS Low Voltage Switchgear Installation and Handling Instructions",
+        "page_number": 15
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-016",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Qual e il grado di protezione IP dell'inverter Bonfiglioli ACT401 in taglia 7 (75-132 kW)?",
+    "expected_answer": "IP 20 (EN60529)",
+    "sources": [
+      {
+        "doc_id": "08c0041d03ac3519fef3b98a743835114c5b7cc523f3df805859844fe12673d2",
+        "doc_title": "Bonfiglioli Active Solution Drive Catalogo Tecnico Inverter",
+        "page_number": 20
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-017",
+    "slice": "answerable_text",
+    "language": "it",
+    "question": "Qual e la potenza del motore del bruciatore Baltur TBG 80 LX-P?",
+    "expected_answer": "1,1 kW",
+    "sources": [
+      {
+        "doc_id": "3d22b042d8cd054494e16ab61662a5ac2e48ad76bc78a40634a6b84f1c9e9d62",
+        "doc_title": "Baltur Scheda Tecnica Bruciatore TBG 80-85 LX-P",
+        "page_number": 3
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-018",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "According to the PumpWorks PWI manual's torque table, what is the recommended torque in ft-lb for a 1 inch stud?",
+    "expected_answer": "535 ft-lb",
+    "sources": [
+      {
+        "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+        "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+        "page_number": 24
+      }
+    ],
+    "notes": "Table 3, Recommended Stud Torque Values. Verified directly in extracted text."
+  },
+  {
+    "id": "bq-019",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "What is the minimum diametrical clearance, in inches, for a wear ring with a diameter between 5.000 and 5.999 inches, per the PumpWorks PWI manual?",
+    "expected_answer": "0.017 in (432 micrometers)",
+    "sources": [
+      {
+        "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+        "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+        "page_number": 19
+      }
+    ],
+    "notes": "Table 2, Standard Minimum Running Clearances (API 610). Verified in extracted text."
+  },
+  {
+    "id": "bq-020",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "According to the PumpWorks PWI manual's spare parts table, how many casing gaskets are recommended for critical service spares?",
+    "expected_answer": "2",
+    "sources": [
+      {
+        "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+        "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+        "page_number": 25
+      }
+    ],
+    "notes": "Table 4, Spare Parts. Verified in extracted text."
+  },
+  {
+    "id": "bq-021",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "What is the operating temperature range of the Arduino Opta, per its datasheet?",
+    "expected_answer": "-20 to 50 degrees C",
+    "sources": [
+      {
+        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+        "page_number": 8
+      }
+    ],
+    "notes": "Datasheet spec table row 'Temperature Operating Range'. Verified in extracted text."
+  },
+  {
+    "id": "bq-022",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Qual e' il limite di durezza massimo dell'acqua di alimentazione (in gradi fH) per gli umidificatori CAREL serie UEX?",
+    "expected_answer": "40 gradi fH (<= 40)",
+    "sources": [
+      {
+        "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+        "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+        "page_number": 46
+      }
+    ],
+    "notes": "Verified by viewing the actual page image: real technical table (Tab. 13.b), row 'limiti di durezza (gradi fH)'."
+  },
+  {
+    "id": "bq-023",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Qual e' il grado di protezione (IP) degli umidificatori CAREL serie UEX?",
+    "expected_answer": "IP20",
+    "sources": [
+      {
+        "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+        "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+        "page_number": 46
+      }
+    ],
+    "notes": "Verified via image, same table as q015, row 'grado di protezione'."
+  },
+  {
+    "id": "bq-024",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Nella tabella 13.b del manuale CAREL UEX, qual e' la potenza assorbita a tensione nominale (in kW) del modello UE045?",
+    "expected_answer": "18,75 kW",
+    "sources": [
+      {
+        "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+        "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+        "page_number": 46
+      }
+    ],
+    "notes": "Verified via image, column UE045** in Tab. 13.b, row 'potenza assorbita a tens. nominale (kW)'."
+  },
+  {
+    "id": "bq-025",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Qual e' la potenza massima ausiliaria (in VA) del modello UE130 dell'umidificatore CAREL UEX?",
+    "expected_answer": "90 VA",
+    "sources": [
+      {
+        "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+        "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+        "page_number": 46
+      }
+    ],
+    "notes": "Verified via image, Tab. 13.b, row 'potenza massima ausiliari (VA)', right-hand column (90/130 group)."
+  },
+  {
+    "id": "bq-026",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "According to the Power Specification table in the Arduino Opta collective datasheet, what is the maximum permissible supply voltage, in volts?",
+    "expected_answer": "27.6 V",
+    "sources": [
+      {
+        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+        "page_number": 8
+      }
+    ],
+    "notes": "Confirmed a genuine data table (section 4.2 Power Specification) on this page via the page image. The row 'Permissible range' lists Min 10.2 V, Max 27.6 V; this max value is not restated anywhere in the surrounding prose."
+  },
+  {
+    "id": "bq-027",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In the flange mounting kit table for the ACS550-01/U1 drive, what is the Code (English) number for the IP54 / UL type 12 kit for frame size R2?",
+    "expected_answer": "100000992",
+    "sources": [
+      {
+        "doc_id": "e3c436e9143c790a68d8c3b3341b3e34c3cb35d67158cee9acbe352346fe161f",
+        "doc_title": "ABB ACS550-01/U1 Low Voltage AC Drives User's Manual",
+        "page_number": 20
+      }
+    ],
+    "notes": "Confirmed a genuine data table with Frame size rows (R1-R6) and Kit/Code(English) columns split by IP21/UL type 1 and IP54/UL type 12. Row R2, IP54 Code column gives 100000992; only readable from the table grid."
+  },
+  {
+    "id": "bq-028",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In the table for withdrawable apparatus units 4M-12M, less than or equal to 400 A main circuits, in the ABB MNS switchgear manual, what is the maximum tightening torque for the 3 x 400 A (40 mm) connection unit size?",
+    "expected_answer": "80 Nm",
+    "sources": [
+      {
+        "doc_id": "f7309f2bd6935148d577ec0e828dba560b43ce0aedc3e5ddab1c783d7d014502",
+        "doc_title": "ABB MNS Low Voltage Switchgear Installation and Handling Instructions",
+        "page_number": 15
+      }
+    ],
+    "notes": "Confirmed a genuine data table with columns Connection unit size, Max. connectable area, Max. bolt dimension, Max. tightening torque, Cable shields per phase. The 3 x 400 A (40 mm) row gives 80 Nm."
+  },
+  {
+    "id": "bq-029",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In the roller merge dimensions table for the Interroll RM 8310/8320/8330 conveyor, what is the module length ML (in mm) for a between-frames width (BF) of 620 mm at a 30 degree merge angle?",
+    "expected_answer": "1140 mm",
+    "sources": [
+      {
+        "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+        "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+        "page_number": 20
+      }
+    ],
+    "notes": "Confirmed a genuine dimensions table with a Between frames BF column and two Module length ML columns (for 45 degree and 30 degree merge angles). Row BF=620, 30 degree column gives 1140 mm."
+  },
+  {
+    "id": "bq-030",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la tabella dati tecnici ACT401 (da 75 a 132 kW) nel catalogo Bonfiglioli Active Solution Drive, qual e la corrente di sovraccarico per 60 secondi (Ipk) del modello ACT401-47, in ampere?",
+    "expected_answer": "315.0 A",
+    "sources": [
+      {
+        "doc_id": "08c0041d03ac3519fef3b98a743835114c5b7cc523f3df805859844fe12673d2",
+        "doc_title": "Bonfiglioli Active Solution Drive Catalogo Tecnico Inverter",
+        "page_number": 20
+      }
+    ],
+    "notes": "Confermata una tabella tecnica genuina con colonne per i modelli ACT401-43/45/47/49. La riga 'Corrente di sovraccarico per 60 sec' (Ipk), colonna 47, riporta 315.0 A."
+  },
+  {
+    "id": "bq-031",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In Table 7 (Standard values of the fourth status word, location L[39]) of the Mecc Alte DSR digital regulator technical guide, what is the value listed for RMS regulation at 60 Hz rated frequency?",
+    "expected_answer": "24365",
+    "sources": [
+      {
+        "doc_id": "f57f590661950ee04dca29bad40b89bd7609dd55b1d53284399f2d771d6ee49a",
+        "doc_title": "Mecc Alte DSR Guida Tecnica Regolatore Digitale",
+        "page_number": 15
+      }
+    ],
+    "notes": "Confirmed a genuine numeric table (Table 7) pairing regulation type rows (RMS, AVG+...) with 50Hz/60Hz rated-frequency columns. RMS row, 60Hz column, gives 24365 (footnote markers in the image are annotations, not part of the value)."
+  },
+  {
+    "id": "bq-032",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la tabella 'Coppia di serraggio delle viti' nel manuale OMAL delle valvole a farfalla, qual e la coppia di serraggio (Nm) prevista per una vite M10?",
+    "expected_answer": "45-50 Nm",
+    "sources": [
+      {
+        "doc_id": "f44000d8440373ab83211e1537d4b683cb39d695cc9e69cc94830c3248c502cd",
+        "doc_title": "OMAL Manuale di Istruzioni Valvole a Farfalla Serie 375-376-377/385-386-387",
+        "page_number": 5
+      }
+    ],
+    "notes": "Confermata una tabella genuina a due colonne SIZE / TORQUE Nm con righe M5, M6, M8, M10, M12. La riga M10 riporta 45-50."
+  },
+  {
+    "id": "bq-033",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Nella tabella 'Sonda di pressione vapore' della scheda tecnica Baltur del bruciatore TBG 80-85 LX-P, qual e il codice della sonda con campo di regolazione 0 / 25 bar?",
+    "expected_answer": "98000048",
+    "sources": [
+      {
+        "doc_id": "3d22b042d8cd054494e16ab61662a5ac2e48ad76bc78a40634a6b84f1c9e9d62",
+        "doc_title": "Baltur Scheda Tecnica Bruciatore TBG 80-85 LX-P",
+        "page_number": 6
+      }
+    ],
+    "notes": "Confermata una tabella genuina con colonne Codice, Pressione vapore, Segnale uscita, Attacco Maschio. La riga con campo di pressione 0/25 bar riporta il codice 98000048."
+  },
+  {
+    "id": "bq-034",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la tabella 'Caratteristiche tecniche' del lettore di prossimita XKPR nel catalogo FAAC Sicurezza e Controllo Accessi 2022, quali sono le dimensioni (LxPxH) in mm?",
+    "expected_answer": "72x28x100 mm",
+    "sources": [
+      {
+        "doc_id": "2fb2274f8ac748234a97025bd53a9d8c6238469d3a557fbda6f99454ea4b57a0",
+        "doc_title": "FAAC Catalogo Sicurezza e Controllo Accessi 2022",
+        "page_number": 30
+      }
+    ],
+    "notes": "Confermata una tabella genuina con righe Modello, Contenitore, Temperatura ambiente, Dimensioni (LxPxH), Collegamento, ecc. per i modelli XKPR 125 e XKPR 1356. La riga Dimensioni riporta 72x28x100 mm (valore comune a entrambi i modelli)."
+  },
+  {
+    "id": "bq-035",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la Tab. G nel manuale Riello (foratura piastra caldaia per il bruciatore RS 45/M BLU), qual e il valore B (mm) indicato nella tabella?",
+    "expected_answer": "224 mm",
+    "sources": [
+      {
+        "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+        "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+        "page_number": 16
+      }
+    ],
+    "notes": "Confermata una tabella genuina 'Tab. G' con colonne mm, A, B, C riferita alla Fig. 9 (foratura piastra caldaia). La riga RS 45/M BLU riporta A=165, B=224, C=M8."
+  },
+  {
+    "id": "bq-036",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Danfoss VLT AutomationDrive exploded view diagram (Illustration 1.1), what component is labeled number 7?",
+    "expected_answer": "USB connector",
+    "sources": [
+      {
+        "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+        "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+        "page_number": 6
+      }
+    ],
+    "notes": "Verified by viewing the actual page image: a real numbered exploded-view diagram with an adjacent 1-20 legend table. Item 7 = 'USB connector'."
+  },
+  {
+    "id": "bq-037",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "According to the Danfoss VLT AutomationDrive exploded view legend, which terminal numbers correspond to the motor terminals U, V, and W?",
+    "expected_answer": "96 (U), 97 (V), 98 (W)",
+    "sources": [
+      {
+        "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+        "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+        "page_number": 6
+      }
+    ],
+    "notes": "Verified by viewing the actual page image; legend item 18."
+  },
+  {
+    "id": "bq-038",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "What enclosure protection rating does the Danfoss VLT AutomationDrive Enclosure Size A have, per the exploded-view page?",
+    "expected_answer": "IP20",
+    "sources": [
+      {
+        "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+        "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+        "page_number": 6
+      }
+    ],
+    "notes": "Caption reads 'Exploded View Enclosure Size A, IP20 (left), and Enclosure Size C, IP55/IP66 (right)'. Verified via image."
+  },
+  {
+    "id": "bq-039",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Arduino Opta Product View diagram (section 5.1), what three terminal labels are printed on the RS-485 terminal block at callout 3J?",
+    "expected_answer": "A(-), GND, B(+)",
+    "sources": [
+      {
+        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+        "page_number": 9
+      }
+    ],
+    "notes": "Confirmed a genuine labeled product-view diagram with numbered callouts 3A-3N pointing to physical features. The terminal labels A(-), GND, B(+) are printed directly on the diagram next to callout 3J; the adjoining legend table (on the next page) only names the block generically ('RS-485 terminal block'), not the individual pin labels."
+  },
+  {
+    "id": "bq-040",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Graphic Local Control Panel (GLCP) diagram (Illustration 5.1) in the Danfoss VLT AutomationDrive operating guide, which key is labeled as item 9?",
+    "expected_answer": "Off",
+    "sources": [
+      {
+        "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+        "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+        "page_number": 20
+      }
+    ],
+    "notes": "Confirmed a genuine labeled diagram of the control panel with numbered leader lines 1-17 pointing to physical buttons and indicator lights. Leader line 9 points to the 'Off' button."
+  },
+  {
+    "id": "bq-041",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Series 20/21 exploded-view diagram in the Bray Resilient Seated Butterfly Valves manual, what part is labeled as item 4?",
+    "expected_answer": "Stem Seal",
+    "sources": [
+      {
+        "doc_id": "44d688d6aafc10ca8bde3ba5b3440f33548a642af393da9a2f841b3373542caa",
+        "doc_title": "Bray Resilient Seated Butterfly Valves Installation, Operation and Maintenance Manual",
+        "page_number": 15
+      }
+    ],
+    "notes": "Confirmed a genuine exploded parts diagram with numbered leader lines 1-7 and an adjoining item legend on the same page. Leader line 4 points to the Stem Seal component."
+  },
+  {
+    "id": "bq-042",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nella vista posteriore del KEOR COMPACT (paragrafo 4.2.1) nel manuale Legrand, a cosa corrisponde il componente numero 17?",
+    "expected_answer": "Interruttore di Batteria",
+    "sources": [
+      {
+        "doc_id": "c6924fd792138999e805bae59215606fe4c23437e17b685a1d39165c67888885",
+        "doc_title": "Legrand KEOR COMPACT Manuale di Installazione e Uso",
+        "page_number": 20
+      }
+    ],
+    "notes": "Confermato un disegno genuino della vista posteriore dell'UPS con callout numerati 1-24. Il numero 17, elencato nella legenda accanto al disegno, indica 'Interruttore di Batteria'."
+  },
+  {
+    "id": "bq-043",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nello schema di collegamento del modulo encoder EM-ENC-05 (morsettiera X410B) nel catalogo Bonfiglioli Active Solution Drive, cosa e collegato al morsetto X410B.5?",
+    "expected_answer": "CAN-Low Systembus",
+    "sources": [
+      {
+        "doc_id": "08c0041d03ac3519fef3b98a743835114c5b7cc523f3df805859844fe12673d2",
+        "doc_title": "Bonfiglioli Active Solution Drive Catalogo Tecnico Inverter",
+        "page_number": 40
+      }
+    ],
+    "notes": "Confermato un disegno genuino della morsettiera con pin numerati da 1 a 7, accanto alla tabella Morsetto/Funzione sulla stessa pagina. Il morsetto X410B.5 e indicato come 'CAN-Low Systembus'."
+  },
+  {
+    "id": "bq-044",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nella Fig. 16 (schema esemplificativo della linea di alimentazione del gas) del manuale Riello, a cosa corrisponde il componente numero 4?",
+    "expected_answer": "Regolatore di pressione",
+    "sources": [
+      {
+        "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+        "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+        "page_number": 20
+      }
+    ],
+    "notes": "Confermato uno schema idraulico genuino con componenti numerati 1-15 (piu punti M1-M3 e L1/L2) e relativa 'Legenda (Fig. 16)' sulla stessa pagina. Il numero 4 corrisponde a 'Regolatore di pressione'."
+  },
+  {
+    "id": "bq-045",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nello schema di collegamento del regolatore DSR per alternatori serie 3 a 6 terminali (Drawing SCC0059/04) nella guida tecnica Mecc Alte, di che colore e il cavo collegato al terminale statore U2?",
+    "expected_answer": "Nero (Black)",
+    "sources": [
+      {
+        "doc_id": "f57f590661950ee04dca29bad40b89bd7609dd55b1d53284399f2d771d6ee49a",
+        "doc_title": "Mecc Alte DSR Guida Tecnica Regolatore Digitale",
+        "page_number": 8
+      }
+    ],
+    "notes": "Confermato uno schema elettrico genuino con etichette di colore stampate direttamente sui cavi (NERO BLACK, VERDE GREEN, GIALLO YELLOW). Il cavo che scende dal terminale U2 verso la scheda regolatore e etichettato NERO BLACK."
+  },
+  {
+    "id": "bq-046",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nel disegno esploso della valvola a farfalla OMAL (serie 375-376-377/385-386-387), a cosa corrisponde il componente numero 5?",
+    "expected_answer": "Albero inferiore",
+    "sources": [
+      {
+        "doc_id": "f44000d8440373ab83211e1537d4b683cb39d695cc9e69cc94830c3248c502cd",
+        "doc_title": "OMAL Manuale di Istruzioni Valvole a Farfalla Serie 375-376-377/385-386-387",
+        "page_number": 8
+      }
+    ],
+    "notes": "Confermato un disegno esploso genuino con callout numerati 1-10 (piu varianti contrassegnate con asterisco) e legenda a tabella sulla stessa pagina. Il numero 5 corrisponde a 'Albero inferiore'."
+  },
+  {
+    "id": "bq-047",
+    "slice": "scanned_no_text_layer",
+    "language": "en",
+    "question": "According to the Interroll 24-V Roller Conveyor manual's EC declaration, which EC directives apply to the conveyor module?",
+    "expected_answer": "Machinery Directive 2006/42/EC and EMC Directive 2014/30/EU",
+    "sources": [
+      {
+        "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+        "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+        "page_number": 77
+      }
+    ],
+    "notes": "This page has text_source=ocr (no PDF text layer). EasyOCR successfully extracted real, mostly-readable content here, one of the few OCR'd pages in the corpus where that happened (see benchmark methodology note). Minor OCR noise present ('Dietmar-Hopp-Strafe' for 'Dietmar-Hopp-Straße', 't0' for 'to')."
+  },
+  {
+    "id": "bq-048",
+    "slice": "scanned_no_text_layer",
+    "language": "en",
+    "question": "Who signed the Interroll 24-V Roller Conveyor EC declaration as the responsible manager?",
+    "expected_answer": "Robert Lugauer",
+    "sources": [
+      {
+        "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+        "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+        "page_number": 77
+      }
+    ],
+    "notes": "Same OCR'd page as q011."
+  },
+  {
+    "id": "bq-049",
+    "slice": "scanned_no_text_layer",
+    "language": "en",
+    "question": "According to the installation declaration on page 77 of the Interroll RM 8310/8320/8330 manual, which company is listed as responsible for the EC documentation, and where is it located?",
+    "expected_answer": "Interroll Automation GmbH, Dietmar-Hopp-Strasse 3, D-74889 Sinsheim, Germany.",
+    "sources": [
+      {
+        "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+        "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+        "page_number": 77
+      }
+    ],
+    "notes": "This was the only page, out of 29 pages flagged as ocr_pages across the entire corpus, that actually contained visible content. The other 28 (across CAREL, FAAC, Bonfiglioli, Pedrollo, Atlas Copco, Riello, Danfoss, Goulds EN, Enerpac, ABB ACS550, Goulds IT) are genuinely blank filler pages, confirmed both by their empty extracted-text field and by directly inspecting each page image, which rendered as uniform white with file sizes of roughly 5-10KB, versus 537KB for this page. For this one usable page, the OCR text matched the scanned image well overall: it correctly captured company name, address, directive numbers and standards. Minor errors: 'Strasse' was OCR'd as 'Strafe' (the German sharp-s misread), and the handwritten date '12.10.16' came through as garbled characters ('/ 2 X0. i 6'), since handwriting is not reliably OCR'd."
+  },
+  {
+    "id": "bq-050",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Do the Arduino Opta PLC, the Danfoss VLT AutomationDrive (Enclosure Size A), and the CAREL UEX humidifier all share the same IP degree of protection rating? If so, which one?",
+    "expected_answer": "Yes, all three are rated IP20",
+    "sources": [
+      {
+        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_title": "Arduino Opta PLC Datasheet",
+        "page_number": 5
+      },
+      {
+        "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+        "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+        "page_number": 6
+      },
+      {
+        "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+        "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+        "page_number": 46
+      }
+    ],
+    "notes": "Requires synthesizing facts already individually verified in q006, q010, and q016. Multi-document answer; doc_id/page_number fields are semicolon-separated lists of the three sources, since the benchmark schema (Task 1 of the infra build) needs to decide how to represent multi-source citations."
+  },
+  {
+    "id": "bq-051",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Which requires a lower (stricter) maximum system impedance (Zmax) at the electrical supply connection: the Daikin EUWAC8 air-cooled water chiller or the FIAC compressor?",
+    "expected_answer": "The Daikin EUWAC8 chiller requires a lower Zmax of 0.06 Ohm, compared to the FIAC compressor's stated maximum permissible impedance of 0.37 Ohm.",
+    "sources": [
+      {
+        "doc_id": "1a51c24cc6caa499ccdf91783e38f22656b241fd9fee91aa976419d20c6c876f",
+        "doc_title": "Daikin EUWAC Air-Cooled Water Chillers Installation and Operation Manual",
+        "page_number": 8
+      },
+      {
+        "doc_id": "05823ea5c731d1145844d8addeffe73bb87e6e9d34ba0e732008597e750a0d28",
+        "doc_title": "FIAC Compressori Manuale d'Uso e Manutenzione",
+        "page_number": 8
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-052",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Are the maximum tightening torque values for M12 bolts the same in the ABB MNS switchgear manual and the OMAL butterfly valve manual?",
+    "expected_answer": "Almost, but not exactly: the ABB MNS manual specifies 80 Nm for the M12 x 35 bolt on an 800 A withdrawable unit main circuit, while the OMAL manual specifies a range of 80-85 Nm for M12 actuator-mounting screws. ABB's single value falls at the low end of OMAL's range.",
+    "sources": [
+      {
+        "doc_id": "f7309f2bd6935148d577ec0e828dba560b43ce0aedc3e5ddab1c783d7d014502",
+        "doc_title": "ABB MNS Low Voltage Switchgear Installation and Handling Instructions",
+        "page_number": 15
+      },
+      {
+        "doc_id": "f44000d8440373ab83211e1537d4b683cb39d695cc9e69cc94830c3248c502cd",
+        "doc_title": "OMAL Manuale di Istruzioni Valvole a Farfalla Serie 375-376-377/385-386-387",
+        "page_number": 5
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-053",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Which has the wider operating/ambient temperature range: the Arduino Opta PLC, or DAB's explosion-proof FKV/FKC submersible sewage pumps?",
+    "expected_answer": "Both share the same low end of -20 C, but the Arduino Opta's range extends further at the high end: -20 to 50 C for the Opta, versus an ambient temperature range of -20 C to +40 C for DAB's explosion-proof FKV/FKC pumps.",
+    "sources": [
+      {
+        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+        "page_number": 8
+      },
+      {
+        "doc_id": "3138d019696b33e11bfa29234c7df93f7cc1f8a4a51e3b5df8abe7ce2b5b1809",
+        "doc_title": "DAB Pumps Serie FK Istruzioni per l'Installazione e la Manutenzione",
+        "page_number": 22
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-054",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Which product has a higher degree of ingress protection (IP rating): the Riello RS 45/M BLU gas burner or the Bonfiglioli ACT401 inverter (size 7)?",
+    "expected_answer": "The Riello RS 45/M BLU burner, rated IP 44, has a higher ingress protection rating than the Bonfiglioli ACT401 inverter, which is rated IP 20.",
+    "sources": [
+      {
+        "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+        "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+        "page_number": 10
+      },
+      {
+        "doc_id": "08c0041d03ac3519fef3b98a743835114c5b7cc523f3df805859844fe12673d2",
+        "doc_title": "Bonfiglioli Active Solution Drive Catalogo Tecnico Inverter",
+        "page_number": 20
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-055",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Does the Daikin EUWAC air-cooled water chiller or the Riello RS 45/M BLU burner run on a single-phase electrical supply?",
+    "expected_answer": "The Riello RS 45/M BLU burner runs on a single-phase supply (1N ~ 230V, 50Hz); the Daikin EUWAC5/8/10 chillers require a three-phase supply (3N ~ 50Hz, 400V).",
+    "sources": [
+      {
+        "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+        "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+        "page_number": 10
+      },
+      {
+        "doc_id": "1a51c24cc6caa499ccdf91783e38f22656b241fd9fee91aa976419d20c6c876f",
+        "doc_title": "Daikin EUWAC Air-Cooled Water Chillers Installation and Operation Manual",
+        "page_number": 8
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-056",
+    "slice": "cross_document",
+    "language": "en",
+    "question": "Between the Baltur TBG 80 LX-P and the Riello RS 45/M BLU gas burners, which has the higher rated electric motor/absorbed power?",
+    "expected_answer": "The Baltur TBG 80 LX-P has a 1.1 kW motor, which is higher than the Riello RS 45/M BLU's maximum absorbed electric power of 600 W.",
+    "sources": [
+      {
+        "doc_id": "3d22b042d8cd054494e16ab61662a5ac2e48ad76bc78a40634a6b84f1c9e9d62",
+        "doc_title": "Baltur Scheda Tecnica Bruciatore TBG 80-85 LX-P",
+        "page_number": 3
+      },
+      {
+        "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+        "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+        "page_number": 10
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "id": "bq-057",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "What is the maximum allowable operating pressure rating of the PumpWorks PWI pump, according to the manual?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "Full 26-page manual read page by page; no PSI/bar maximum operating pressure value appears anywhere. The document covers installation/operation/maintenance, not a pump data sheet with a pressure rating. Genuinely unanswerable from this corpus."
+  },
+  {
+    "id": "bq-058",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "What is the recommended maintenance interval for a Grundfos CR vertical multistage pump?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "Grundfos is not a manufacturer represented anywhere in the 28-document seed corpus (confirmed against the full document title list). Genuinely unanswerable, not a trick question about a real corpus document."
+  },
+  {
+    "id": "bq-059",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "What is the maximum flow rate, in GPM, of the Goulds Pumps Model 3796i chemical process pump?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "The corpus contains IOMs for the Goulds Pumps Model 3755 (English) and a separate Goulds manual in Italian, but not the Model 3796i, which is a different product line. This spec is not covered anywhere in the corpus."
+  },
+  {
+    "id": "bq-060",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "What is the screen resolution of the optional graphical LCP (Local Control Panel) display on the Danfoss VLT AutomationDrive FC 302?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "The Danfoss operating guide describes the LCP's keys, indicator lights and menu navigation in detail but never states a pixel or screen resolution for the display. This hardware detail is not present in the corpus."
+  },
+  {
+    "id": "bq-061",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "According to the manual, what calibration gas concentration is recommended for the methane sensor on a Honeywell BW MicroClip XL detector?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "The corpus contains the manual for the Honeywell GasAlertMicroClip 1/2/3/4 family, a related but different product; the BW MicroClip XL is not covered anywhere in the corpus."
+  },
+  {
+    "id": "bq-062",
+    "slice": "unanswerable",
+    "language": "it",
+    "question": "Qual e il periodo di garanzia, in anni, offerto da Pedrollo per la centralina di controllo PRO-DG?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "Il manuale Pedrollo PRO-DG copre installazione e manutenzione ma non riporta condizioni di garanzia commerciale; questa informazione non e presente nel corpus."
+  },
+  {
+    "id": "bq-063",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "What is the maximum Wi-Fi range, in meters, supported by the Arduino Opta WiFi (AFX00002) before signal degradation occurs?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "The Opta datasheet lists Wi-Fi 2.4 GHz as a supported communication interface but gives no maximum range or signal-degradation distance. This RF performance detail is not in the corpus."
+  },
+  {
+    "id": "bq-064",
+    "slice": "unanswerable",
+    "language": "it",
+    "question": "Qual e l'intervallo di sostituzione consigliato per gli O-ring delle valvole a farfalla Bray Serie 30/31 a tenuta metallica?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "Il documento Bray presente nel corpus riguarda specificamente le valvole a farfalla a tenuta elastomerica (resilient seated); la Serie 30/31 a tenuta metallica e una linea di prodotto diversa e non e trattata nel corpus."
+  },
+  {
+    "id": "bq-065",
+    "slice": "unanswerable",
+    "language": "en",
+    "question": "What is the price difference between an ABB ACS550-01/U1 drive and an ABB ACS580 drive of equivalent power rating?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "Technical/user manuals in this corpus, including the ABB ACS550 manual, never include pricing information for any product, and the ACS580 series is not covered in the corpus at all."
+  },
+  {
+    "id": "bq-066",
+    "slice": "unanswerable",
+    "language": "it",
+    "question": "Qual e l'impronta di CO2 (kg CO2/kWh) legata alla produzione dell'inverter Bonfiglioli Active Solution Drive?",
+    "expected_answer": null,
+    "sources": [],
+    "notes": "Il catalogo tecnico Bonfiglioli riporta dati elettrici e meccanici dell'inverter ma non contiene dati di sostenibilita o impronta di carbonio del processo produttivo; questa informazione non e presente nel corpus."
+  }
+]

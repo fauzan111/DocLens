@@ -1,0 +1,200 @@
+[
+  {
+    "id": "visual-001",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "According to the Power Specification table in the Arduino Opta collective datasheet, what is the maximum permissible supply voltage, in volts?",
+    "expected_answer": "27.6 V",
+    "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+    "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+    "page_number": 8,
+    "notes": "Confirmed a genuine data table (section 4.2 Power Specification) on this page via the page image. The row 'Permissible range' lists Min 10.2 V, Max 27.6 V; this max value is not restated anywhere in the surrounding prose."
+  },
+  {
+    "id": "visual-002",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In the flange mounting kit table for the ACS550-01/U1 drive, what is the Code (English) number for the IP54 / UL type 12 kit for frame size R2?",
+    "expected_answer": "100000992",
+    "doc_id": "e3c436e9143c790a68d8c3b3341b3e34c3cb35d67158cee9acbe352346fe161f",
+    "doc_title": "ABB ACS550-01/U1 Low Voltage AC Drives User's Manual",
+    "page_number": 20,
+    "notes": "Confirmed a genuine data table with Frame size rows (R1-R6) and Kit/Code(English) columns split by IP21/UL type 1 and IP54/UL type 12. Row R2, IP54 Code column gives 100000992; only readable from the table grid."
+  },
+  {
+    "id": "visual-003",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In the table for withdrawable apparatus units 4M-12M, less than or equal to 400 A main circuits, in the ABB MNS switchgear manual, what is the maximum tightening torque for the 3 x 400 A (40 mm) connection unit size?",
+    "expected_answer": "80 Nm",
+    "doc_id": "f7309f2bd6935148d577ec0e828dba560b43ce0aedc3e5ddab1c783d7d014502",
+    "doc_title": "ABB MNS Low Voltage Switchgear Installation and Handling Instructions",
+    "page_number": 15,
+    "notes": "Confirmed a genuine data table with columns Connection unit size, Max. connectable area, Max. bolt dimension, Max. tightening torque, Cable shields per phase. The 3 x 400 A (40 mm) row gives 80 Nm."
+  },
+  {
+    "id": "visual-004",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In the roller merge dimensions table for the Interroll RM 8310/8320/8330 conveyor, what is the module length ML (in mm) for a between-frames width (BF) of 620 mm at a 30 degree merge angle?",
+    "expected_answer": "1140 mm",
+    "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+    "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+    "page_number": 20,
+    "notes": "Confirmed a genuine dimensions table with a Between frames BF column and two Module length ML columns (for 45 degree and 30 degree merge angles). Row BF=620, 30 degree column gives 1140 mm."
+  },
+  {
+    "id": "visual-005",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la tabella dati tecnici ACT401 (da 75 a 132 kW) nel catalogo Bonfiglioli Active Solution Drive, qual e la corrente di sovraccarico per 60 secondi (Ipk) del modello ACT401-47, in ampere?",
+    "expected_answer": "315.0 A",
+    "doc_id": "08c0041d03ac3519fef3b98a743835114c5b7cc523f3df805859844fe12673d2",
+    "doc_title": "Bonfiglioli Active Solution Drive Catalogo Tecnico Inverter",
+    "page_number": 20,
+    "notes": "Confermata una tabella tecnica genuina con colonne per i modelli ACT401-43/45/47/49. La riga 'Corrente di sovraccarico per 60 sec' (Ipk), colonna 47, riporta 315.0 A."
+  },
+  {
+    "id": "visual-006",
+    "slice": "table_lookup",
+    "language": "en",
+    "question": "In Table 7 (Standard values of the fourth status word, location L[39]) of the Mecc Alte DSR digital regulator technical guide, what is the value listed for RMS regulation at 60 Hz rated frequency?",
+    "expected_answer": "24365",
+    "doc_id": "f57f590661950ee04dca29bad40b89bd7609dd55b1d53284399f2d771d6ee49a",
+    "doc_title": "Mecc Alte DSR Guida Tecnica Regolatore Digitale",
+    "page_number": 15,
+    "notes": "Confirmed a genuine numeric table (Table 7) pairing regulation type rows (RMS, AVG+...) with 50Hz/60Hz rated-frequency columns. RMS row, 60Hz column, gives 24365 (footnote markers in the image are annotations, not part of the value)."
+  },
+  {
+    "id": "visual-007",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la tabella 'Coppia di serraggio delle viti' nel manuale OMAL delle valvole a farfalla, qual e la coppia di serraggio (Nm) prevista per una vite M10?",
+    "expected_answer": "45-50 Nm",
+    "doc_id": "f44000d8440373ab83211e1537d4b683cb39d695cc9e69cc94830c3248c502cd",
+    "doc_title": "OMAL Manuale di Istruzioni Valvole a Farfalla Serie 375-376-377/385-386-387",
+    "page_number": 5,
+    "notes": "Confermata una tabella genuina a due colonne SIZE / TORQUE Nm con righe M5, M6, M8, M10, M12. La riga M10 riporta 45-50."
+  },
+  {
+    "id": "visual-008",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Nella tabella 'Sonda di pressione vapore' della scheda tecnica Baltur del bruciatore TBG 80-85 LX-P, qual e il codice della sonda con campo di regolazione 0 / 25 bar?",
+    "expected_answer": "98000048",
+    "doc_id": "3d22b042d8cd054494e16ab61662a5ac2e48ad76bc78a40634a6b84f1c9e9d62",
+    "doc_title": "Baltur Scheda Tecnica Bruciatore TBG 80-85 LX-P",
+    "page_number": 6,
+    "notes": "Confermata una tabella genuina con colonne Codice, Pressione vapore, Segnale uscita, Attacco Maschio. La riga con campo di pressione 0/25 bar riporta il codice 98000048."
+  },
+  {
+    "id": "visual-009",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la tabella 'Caratteristiche tecniche' del lettore di prossimita XKPR nel catalogo FAAC Sicurezza e Controllo Accessi 2022, quali sono le dimensioni (LxPxH) in mm?",
+    "expected_answer": "72x28x100 mm",
+    "doc_id": "2fb2274f8ac748234a97025bd53a9d8c6238469d3a557fbda6f99454ea4b57a0",
+    "doc_title": "FAAC Catalogo Sicurezza e Controllo Accessi 2022",
+    "page_number": 30,
+    "notes": "Confermata una tabella genuina con righe Modello, Contenitore, Temperatura ambiente, Dimensioni (LxPxH), Collegamento, ecc. per i modelli XKPR 125 e XKPR 1356. La riga Dimensioni riporta 72x28x100 mm (valore comune a entrambi i modelli)."
+  },
+  {
+    "id": "visual-010",
+    "slice": "table_lookup",
+    "language": "it",
+    "question": "Secondo la Tab. G nel manuale Riello (foratura piastra caldaia per il bruciatore RS 45/M BLU), qual e il valore B (mm) indicato nella tabella?",
+    "expected_answer": "224 mm",
+    "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+    "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+    "page_number": 16,
+    "notes": "Confermata una tabella genuina 'Tab. G' con colonne mm, A, B, C riferita alla Fig. 9 (foratura piastra caldaia). La riga RS 45/M BLU riporta A=165, B=224, C=M8."
+  },
+  {
+    "id": "visual-011",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Arduino Opta Product View diagram (section 5.1), what three terminal labels are printed on the RS-485 terminal block at callout 3J?",
+    "expected_answer": "A(-), GND, B(+)",
+    "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+    "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+    "page_number": 9,
+    "notes": "Confirmed a genuine labeled product-view diagram with numbered callouts 3A-3N pointing to physical features. The terminal labels A(-), GND, B(+) are printed directly on the diagram next to callout 3J; the adjoining legend table (on the next page) only names the block generically ('RS-485 terminal block'), not the individual pin labels."
+  },
+  {
+    "id": "visual-012",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Graphic Local Control Panel (GLCP) diagram (Illustration 5.1) in the Danfoss VLT AutomationDrive operating guide, which key is labeled as item 9?",
+    "expected_answer": "Off",
+    "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+    "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+    "page_number": 20,
+    "notes": "Confirmed a genuine labeled diagram of the control panel with numbered leader lines 1-17 pointing to physical buttons and indicator lights. Leader line 9 points to the 'Off' button."
+  },
+  {
+    "id": "visual-013",
+    "slice": "diagram_lookup",
+    "language": "en",
+    "question": "In the Series 20/21 exploded-view diagram in the Bray Resilient Seated Butterfly Valves manual, what part is labeled as item 4?",
+    "expected_answer": "Stem Seal",
+    "doc_id": "44d688d6aafc10ca8bde3ba5b3440f33548a642af393da9a2f841b3373542caa",
+    "doc_title": "Bray Resilient Seated Butterfly Valves Installation, Operation and Maintenance Manual",
+    "page_number": 15,
+    "notes": "Confirmed a genuine exploded parts diagram with numbered leader lines 1-7 and an adjoining item legend on the same page. Leader line 4 points to the Stem Seal component."
+  },
+  {
+    "id": "visual-014",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nella vista posteriore del KEOR COMPACT (paragrafo 4.2.1) nel manuale Legrand, a cosa corrisponde il componente numero 17?",
+    "expected_answer": "Interruttore di Batteria",
+    "doc_id": "c6924fd792138999e805bae59215606fe4c23437e17b685a1d39165c67888885",
+    "doc_title": "Legrand KEOR COMPACT Manuale di Installazione e Uso",
+    "page_number": 20,
+    "notes": "Confermato un disegno genuino della vista posteriore dell'UPS con callout numerati 1-24. Il numero 17, elencato nella legenda accanto al disegno, indica 'Interruttore di Batteria'."
+  },
+  {
+    "id": "visual-015",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nello schema di collegamento del modulo encoder EM-ENC-05 (morsettiera X410B) nel catalogo Bonfiglioli Active Solution Drive, cosa e collegato al morsetto X410B.5?",
+    "expected_answer": "CAN-Low Systembus",
+    "doc_id": "08c0041d03ac3519fef3b98a743835114c5b7cc523f3df805859844fe12673d2",
+    "doc_title": "Bonfiglioli Active Solution Drive Catalogo Tecnico Inverter",
+    "page_number": 40,
+    "notes": "Confermato un disegno genuino della morsettiera con pin numerati da 1 a 7, accanto alla tabella Morsetto/Funzione sulla stessa pagina. Il morsetto X410B.5 e indicato come 'CAN-Low Systembus'."
+  },
+  {
+    "id": "visual-016",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nella Fig. 16 (schema esemplificativo della linea di alimentazione del gas) del manuale Riello, a cosa corrisponde il componente numero 4?",
+    "expected_answer": "Regolatore di pressione",
+    "doc_id": "e10e53f9c32b872e4c16ad9d1701d5d925ab39b29b9c9314d5722c359141ce3f",
+    "doc_title": "Riello Bruciatori Istruzioni per Installazione, Uso e Manutenzione",
+    "page_number": 20,
+    "notes": "Confermato uno schema idraulico genuino con componenti numerati 1-15 (piu punti M1-M3 e L1/L2) e relativa 'Legenda (Fig. 16)' sulla stessa pagina. Il numero 4 corrisponde a 'Regolatore di pressione'."
+  },
+  {
+    "id": "visual-017",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nello schema di collegamento del regolatore DSR per alternatori serie 3 a 6 terminali (Drawing SCC0059/04) nella guida tecnica Mecc Alte, di che colore e il cavo collegato al terminale statore U2?",
+    "expected_answer": "Nero (Black)",
+    "doc_id": "f57f590661950ee04dca29bad40b89bd7609dd55b1d53284399f2d771d6ee49a",
+    "doc_title": "Mecc Alte DSR Guida Tecnica Regolatore Digitale",
+    "page_number": 8,
+    "notes": "Confermato uno schema elettrico genuino con etichette di colore stampate direttamente sui cavi (NERO BLACK, VERDE GREEN, GIALLO YELLOW). Il cavo che scende dal terminale U2 verso la scheda regolatore e etichettato NERO BLACK."
+  },
+  {
+    "id": "visual-018",
+    "slice": "diagram_lookup",
+    "language": "it",
+    "question": "Nel disegno esploso della valvola a farfalla OMAL (serie 375-376-377/385-386-387), a cosa corrisponde il componente numero 5?",
+    "expected_answer": "Albero inferiore",
+    "doc_id": "f44000d8440373ab83211e1537d4b683cb39d695cc9e69cc94830c3248c502cd",
+    "doc_title": "OMAL Manuale di Istruzioni Valvole a Farfalla Serie 375-376-377/385-386-387",
+    "page_number": 8,
+    "notes": "Confermato un disegno esploso genuino con callout numerati 1-10 (piu varianti contrassegnate con asterisco) e legenda a tabella sulla stessa pagina. Il numero 5 corrisponde a 'Albero inferiore'."
+  }
+]

@@ -9,3 +9,6 @@ test_output.txt
 
 # Ingested corpus is regenerable from source PDFs + registry, and can be large
 corpus/
+
+# Retrieval index is regenerable via `doclens build-index`, and can be large
+index/

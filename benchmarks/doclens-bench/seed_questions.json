@@ -1,0 +1,222 @@
+[
+  {
+    "id": "q001",
+    "question": "According to the PumpWorks PWI manual's torque table, what is the recommended torque in ft-lb for a 1 inch stud?",
+    "language": "en",
+    "slice": "table_lookup",
+    "expected_answer": "535 ft-lb",
+    "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+    "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+    "page_number": 24,
+    "notes": "Table 3, Recommended Stud Torque Values. Verified directly in extracted text."
+  },
+  {
+    "id": "q002",
+    "question": "What is the minimum diametrical clearance, in inches, for a wear ring with a diameter between 5.000 and 5.999 inches, per the PumpWorks PWI manual?",
+    "language": "en",
+    "slice": "table_lookup",
+    "expected_answer": "0.017 in (432 micrometers)",
+    "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+    "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+    "page_number": 19,
+    "notes": "Table 2, Standard Minimum Running Clearances (API 610). Verified in extracted text."
+  },
+  {
+    "id": "q003",
+    "question": "According to the PumpWorks PWI manual's spare parts table, how many casing gaskets are recommended for critical service spares?",
+    "language": "en",
+    "slice": "table_lookup",
+    "expected_answer": "2",
+    "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+    "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+    "page_number": 25,
+    "notes": "Table 4, Spare Parts. Verified in extracted text."
+  },
+  {
+    "id": "q004",
+    "question": "At what bearing housing temperature must a PumpWorks PWI pump be stopped immediately, per the manual?",
+    "language": "en",
+    "slice": "answerable_text",
+    "expected_answer": "190 degrees F (88 degrees C)",
+    "doc_id": "3cba77928150108bce7e921374de04c6f0d2e24b1bd3c089a7be23755c69dcdb",
+    "doc_title": "PumpWorks PWI Installation, Operation and Maintenance Manual",
+    "page_number": 13,
+    "notes": "Direct prose statement, verified in extracted text."
+  },
+  {
+    "id": "q005",
+    "question": "What is the maximum allowable operating pressure rating of the PumpWorks PWI pump, according to the manual?",
+    "language": "en",
+    "slice": "unanswerable",
+    "expected_answer": null,
+    "doc_id": null,
+    "doc_title": null,
+    "page_number": null,
+    "notes": "Full 26-page manual read page by page; no PSI/bar maximum operating pressure value appears anywhere. The document covers installation/operation/maintenance, not a pump data sheet with a pressure rating. Genuinely unanswerable from this corpus."
+  },
+  {
+    "id": "q006",
+    "question": "What is the IP degree of protection rating of the Arduino Opta PLC?",
+    "language": "en",
+    "slice": "answerable_text",
+    "expected_answer": "IP20",
+    "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+    "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+    "page_number": 5,
+    "notes": "Also repeated on page 8. Verified in extracted text (datasheet spec table)."
+  },
+  {
+    "id": "q007",
+    "question": "What is the operating temperature range of the Arduino Opta, per its datasheet?",
+    "language": "en",
+    "slice": "table_lookup",
+    "expected_answer": "-20 to 50 degrees C",
+    "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+    "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
+    "page_number": 8,
+    "notes": "Datasheet spec table row 'Temperature Operating Range'. Verified in extracted text."
+  },
+  {
+    "id": "q008",
+    "question": "In the Danfoss VLT AutomationDrive exploded view diagram (Illustration 1.1), what component is labeled number 7?",
+    "language": "en",
+    "slice": "diagram_lookup",
+    "expected_answer": "USB connector",
+    "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+    "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+    "page_number": 6,
+    "notes": "Verified by viewing the actual page image: a real numbered exploded-view diagram with an adjacent 1-20 legend table. Item 7 = 'USB connector'."
+  },
+  {
+    "id": "q009",
+    "question": "According to the Danfoss VLT AutomationDrive exploded view legend, which terminal numbers correspond to the motor terminals U, V, and W?",
+    "language": "en",
+    "slice": "diagram_lookup",
+    "expected_answer": "96 (U), 97 (V), 98 (W)",
+    "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+    "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+    "page_number": 6,
+    "notes": "Verified by viewing the actual page image; legend item 18."
+  },
+  {
+    "id": "q010",
+    "question": "What enclosure protection rating does the Danfoss VLT AutomationDrive Enclosure Size A have, per the exploded-view page?",
+    "language": "en",
+    "slice": "diagram_lookup",
+    "expected_answer": "IP20",
+    "doc_id": "65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027",
+    "doc_title": "Danfoss VLT AutomationDrive FC 301/302 Operating Guide",
+    "page_number": 6,
+    "notes": "Caption reads 'Exploded View Enclosure Size A, IP20 (left), and Enclosure Size C, IP55/IP66 (right)'. Verified via image."
+  },
+  {
+    "id": "q011",
+    "question": "According to the Interroll 24-V Roller Conveyor manual's EC declaration, which EC directives apply to the conveyor module?",
+    "language": "en",
+    "slice": "scanned_no_text_layer",
+    "expected_answer": "Machinery Directive 2006/42/EC and EMC Directive 2014/30/EU",
+    "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+    "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+    "page_number": 77,
+    "notes": "This page has text_source=ocr (no PDF text layer). EasyOCR successfully extracted real, mostly-readable content here, one of the few OCR'd pages in the corpus where that happened (see benchmark methodology note). Minor OCR noise present ('Dietmar-Hopp-Strafe' for 'Dietmar-Hopp-Straße', 't0' for 'to')."
+  },
+  {
+    "id": "q012",
+    "question": "Who signed the Interroll 24-V Roller Conveyor EC declaration as the responsible manager?",
+    "language": "en",
+    "slice": "scanned_no_text_layer",
+    "expected_answer": "Robert Lugauer",
+    "doc_id": "1506756fd352ea74ce5693c0cda8c4b7ddcaf08ec8125ce58bce29a8d1558641",
+    "doc_title": "Interroll 24V Roller Conveyor RM 8310/8320/8330 Installation and Operating Instructions",
+    "page_number": 77,
+    "notes": "Same OCR'd page as q011."
+  },
+  {
+    "id": "q013",
+    "question": "Qual e' la classe di protezione dei motori della pompa DAB serie FK, secondo la norma IEC 60529?",
+    "language": "it",
+    "slice": "answerable_text",
+    "expected_answer": "IP68",
+    "doc_id": "3138d019696b33e11bfa29234c7df93f7cc1f8a4a51e3b5df8abe7ce2b5b1809",
+    "doc_title": "DAB Pumps Serie FK Istruzioni per l'Installazione e la Manutenzione",
+    "page_number": 7,
+    "notes": "Verified in extracted text: 'Classe di protezione: IP68. Secondo IEC 60529.'"
+  },
+  {
+    "id": "q014",
+    "question": "Qual e' la classe di isolamento dei motori della pompa DAB serie FK?",
+    "language": "it",
+    "slice": "answerable_text",
+    "expected_answer": "Classe F (155 gradi C)",
+    "doc_id": "3138d019696b33e11bfa29234c7df93f7cc1f8a4a51e3b5df8abe7ce2b5b1809",
+    "doc_title": "DAB Pumps Serie FK Istruzioni per l'Installazione e la Manutenzione",
+    "page_number": 7,
+    "notes": "Verified in extracted text, same location as q013."
+  },
+  {
+    "id": "q015",
+    "question": "Qual e' il limite di durezza massimo dell'acqua di alimentazione (in gradi fH) per gli umidificatori CAREL serie UEX?",
+    "language": "it",
+    "slice": "table_lookup",
+    "expected_answer": "40 gradi fH (<= 40)",
+    "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+    "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+    "page_number": 46,
+    "notes": "Verified by viewing the actual page image: real technical table (Tab. 13.b), row 'limiti di durezza (gradi fH)'."
+  },
+  {
+    "id": "q016",
+    "question": "Qual e' il grado di protezione (IP) degli umidificatori CAREL serie UEX?",
+    "language": "it",
+    "slice": "table_lookup",
+    "expected_answer": "IP20",
+    "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+    "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+    "page_number": 46,
+    "notes": "Verified via image, same table as q015, row 'grado di protezione'."
+  },
+  {
+    "id": "q017",
+    "question": "Nella tabella 13.b del manuale CAREL UEX, qual e' la potenza assorbita a tensione nominale (in kW) del modello UE045?",
+    "language": "it",
+    "slice": "table_lookup",
+    "expected_answer": "18,75 kW",
+    "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+    "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+    "page_number": 46,
+    "notes": "Verified via image, column UE045** in Tab. 13.b, row 'potenza assorbita a tens. nominale (kW)'."
+  },
+  {
+    "id": "q018",
+    "question": "Do the Arduino Opta PLC, the Danfoss VLT AutomationDrive (Enclosure Size A), and the CAREL UEX humidifier all share the same IP degree of protection rating? If so, which one?",
+    "language": "en",
+    "slice": "cross_document",
+    "expected_answer": "Yes, all three are rated IP20",
+    "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da;65ea1b76c3b53927ca73740683d1b7166761a4992c168322693a4c068ab49027;041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+    "doc_title": "Arduino Opta PLC Datasheet; Danfoss VLT AutomationDrive FC 301/302 Operating Guide; CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+    "page_number": "5 or 8; 6; 46",
+    "notes": "Requires synthesizing facts already individually verified in q006, q010, and q016. Multi-document answer; doc_id/page_number fields are semicolon-separated lists of the three sources, since the benchmark schema (Task 1 of the infra build) needs to decide how to represent multi-source citations."
+  },
+  {
+    "id": "q019",
+    "question": "What is the recommended maintenance interval for a Grundfos CR vertical multistage pump?",
+    "language": "en",
+    "slice": "unanswerable",
+    "expected_answer": null,
+    "doc_id": null,
+    "doc_title": null,
+    "page_number": null,
+    "notes": "Grundfos is not a manufacturer represented anywhere in the 28-document seed corpus (confirmed against the full document title list). Genuinely unanswerable, not a trick question about a real corpus document."
+  },
+  {
+    "id": "q020",
+    "question": "Qual e' la potenza massima ausiliaria (in VA) del modello UE130 dell'umidificatore CAREL UEX?",
+    "language": "it",
+    "slice": "table_lookup",
+    "expected_answer": "90 VA",
+    "doc_id": "041d79afdac54b1d46d4f7f2d69a5be49c51a02653b727b1bc6859a1e0fdd954",
+    "doc_title": "CAREL humiSteam x-plus Manuale d'Uso Umidificatori",
+    "page_number": 46,
+    "notes": "Verified via image, Tab. 13.b, row 'potenza massima ausiliari (VA)', right-hand column (90/130 group)."
+  }
+]
