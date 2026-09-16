@@ -1,7 +1,12 @@
+import json
 from pathlib import Path
 
 import typer
 
+from doclens.eval.dataset_card import generate_benchmark_card
+from doclens.eval.grounding import validate_grounding
+from doclens.eval.loader import load_benchmark_draft
+from doclens.eval.split import assign_splits, check_contamination
 from doclens.ingest.dataset_card import generate_dataset_card
 from doclens.ingest.models import License
 from doclens.ingest.pipeline import run_ingestion
@@ -73,6 +78,58 @@ def query(
         typer.echo(f"\nAnswer: {result.text}")
         for citation in result.citations:
             typer.echo(f"  - {citation.doc_title}, page {citation.page_number}")
+
+
+@app.command(name="bench-validate")
+def bench_validate(
+    draft: Path = typer.Option(..., help="Path to the raw benchmark draft JSON"),
+    corpus_dir: Path = typer.Option(Path("corpus"), help="Ingested corpus directory"),
+) -> None:
+    questions = load_benchmark_draft(draft)
+    issues = validate_grounding(questions, corpus_dir)
+    if not issues:
+        typer.echo(f"All {len(questions)} questions are grounded in the corpus.")
+        return
+    for issue in issues:
+        typer.echo(f"  {issue.question_id}: {issue.reason}")
+    typer.echo(f"{len(issues)} grounding issue(s) found.")
+    raise typer.Exit(code=1)
+
+
+@app.command(name="bench-freeze")
+def bench_freeze(
+    draft: Path = typer.Option(..., help="Path to the raw benchmark draft JSON"),
+    corpus_dir: Path = typer.Option(Path("corpus"), help="Ingested corpus directory"),
+    out_dir: Path = typer.Option(Path("benchmarks/doclens-bench"), help="Output directory"),
+) -> None:
+    questions = load_benchmark_draft(draft)
+
+    grounding_issues = validate_grounding(questions, corpus_dir)
+    if grounding_issues:
+        for issue in grounding_issues:
+            typer.echo(f"  {issue.question_id}: {issue.reason}")
+        typer.echo(f"Refusing to freeze: {len(grounding_issues)} grounding issue(s) found.")
+        raise typer.Exit(code=1)
+
+    split_questions = assign_splits(questions)
+    contamination_issues = check_contamination(split_questions)
+    if contamination_issues:
+        for issue in contamination_issues:
+            typer.echo(f"  {issue.dev_id} <-> {issue.hidden_id}: overlap {issue.overlap_ratio:.2f}")
+        typer.echo(f"Refusing to freeze: {len(contamination_issues)} contamination issue(s) found.")
+        raise typer.Exit(code=1)
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    questions_path = out_dir / "questions.json"
+    payload = [q.model_dump(mode="json") for q in split_questions]
+    questions_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    card_path = out_dir / "DATASET_CARD.md"
+    card_path.write_text(generate_benchmark_card(split_questions), encoding="utf-8")
+
+    typer.echo(f"Froze {len(split_questions)} questions to {questions_path}")
+    typer.echo(f"Wrote dataset card to {card_path}")
 
 
 if __name__ == "__main__":
