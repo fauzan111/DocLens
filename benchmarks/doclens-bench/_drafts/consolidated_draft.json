@@ -717,7 +717,7 @@
         "page_number": 77
       }
     ],
-    "notes": "Same OCR'd page as q011."
+    "notes": "Same OCR'd page as bq-047."
   },
   {
     "id": "bq-049",
@@ -757,7 +757,7 @@
         "page_number": 46
       }
     ],
-    "notes": "Requires synthesizing facts already individually verified in q006, q010, and q016. Multi-document answer; doc_id/page_number fields are semicolon-separated lists of the three sources, since the benchmark schema (Task 1 of the infra build) needs to decide how to represent multi-source citations."
+    "notes": "Requires synthesizing facts already individually verified in bq-002 (Arduino Opta), bq-038 (Danfoss enclosure), and bq-023 (CAREL UEX): all three independently confirmed IP20."
   },
   {
     "id": "bq-051",

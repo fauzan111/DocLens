@@ -7,6 +7,7 @@ from doclens.eval.dataset_card import generate_benchmark_card
 from doclens.eval.grounding import validate_grounding
 from doclens.eval.loader import load_benchmark_draft
 from doclens.eval.split import assign_splits, check_contamination
+from doclens.ingest.corpus import load_documents
 from doclens.ingest.dataset_card import generate_dataset_card
 from doclens.ingest.models import License
 from doclens.ingest.pipeline import run_ingestion
@@ -126,7 +127,11 @@ def bench_freeze(
         json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8"
     )
     card_path = out_dir / "DATASET_CARD.md"
-    card_path.write_text(generate_benchmark_card(split_questions), encoding="utf-8")
+    corpus_document_count = len(load_documents(corpus_dir))
+    card_path.write_text(
+        generate_benchmark_card(split_questions, corpus_document_count=corpus_document_count),
+        encoding="utf-8",
+    )
 
     typer.echo(f"Froze {len(split_questions)} questions to {questions_path}")
     typer.echo(f"Wrote dataset card to {card_path}")

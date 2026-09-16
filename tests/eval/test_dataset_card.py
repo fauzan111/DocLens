@@ -46,3 +46,29 @@ def test_dataset_card_documents_the_scanned_page_limitation():
 
     assert "scanned_no_text_layer" in card
     assert "Interroll" in card
+
+
+def test_dataset_card_reports_provenance():
+    questions = [_question("bq-001", "answerable_text", "en", "dev")]
+
+    card = generate_benchmark_card(questions, seed=42, corpus_document_count=28)
+
+    assert "Split seed: 42" in card
+    assert "Corpus documents at freeze time: 28" in card
+
+
+def test_dataset_card_omits_corpus_document_count_when_not_provided():
+    questions = [_question("bq-001", "answerable_text", "en", "dev")]
+
+    card = generate_benchmark_card(questions)
+
+    assert "Corpus documents at freeze time" not in card
+
+
+def test_dataset_card_documents_scope_and_data_corrections():
+    questions = [_question("bq-001", "answerable_text", "en", "dev")]
+
+    card = generate_benchmark_card(questions)
+
+    assert "200-300" in card
+    assert "Arduino Opta" in card

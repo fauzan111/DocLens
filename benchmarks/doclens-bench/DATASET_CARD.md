@@ -21,6 +21,12 @@ Total questions: 66
 - dev: 53
 - hidden: 13
 
+## Provenance
+
+- Frozen: 2026-09-16
+- Split seed: 42
+- Corpus documents at freeze time: 28
+
 ## Known limitation: scanned_no_text_layer coverage
 
 Of the ~29 pages flagged `text_source: "ocr"` across the 28-document seed corpus, only one
@@ -31,3 +37,19 @@ therefore populated with 3 questions, all grounded in that single real page, rat
 originally planned 8. Growing this slice meaningfully requires sourcing documents with
 genuinely scanned (non-blank) content, not just documents that happen to have an OCR-tagged
 page.
+
+## Known limitation: scope vs the eventual target
+
+This is a first, smaller tranche (66 questions) of the 200-300 question benchmark DESIGN.md
+describes as the eventual target. Per-slice hidden-split counts are small as a direct
+consequence (e.g. cross_document hidden=1, scanned_no_text_layer hidden=1); metrics computed
+on individual slices of the hidden split should be read as directional, not statistically
+robust, until the benchmark grows.
+
+## Data corrections
+
+Six questions citing the Arduino Opta PLC datasheet were repointed to a new `doc_id` after the
+manufacturer republished the source PDF with a bumped internal revision date, which changed its
+SHA-256 content hash despite identical substantive content (verified page-by-page: same page
+count, same tables, same values). Caught by this benchmark's own automated grounding validator,
+not assumed. No question text or expected answer was altered, only the stale citation.

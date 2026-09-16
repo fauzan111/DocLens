@@ -1,4 +1,5 @@
 from collections import Counter
+from datetime import datetime, timezone
 
 from doclens.eval.models import BenchmarkQuestion
 
@@ -13,8 +14,28 @@ originally planned 8. Growing this slice meaningfully requires sourcing document
 genuinely scanned (non-blank) content, not just documents that happen to have an OCR-tagged
 page."""
 
+SCOPE_NOTE = """## Known limitation: scope vs the eventual target
 
-def generate_benchmark_card(questions: list[BenchmarkQuestion]) -> str:
+This is a first, smaller tranche (66 questions) of the 200-300 question benchmark DESIGN.md
+describes as the eventual target. Per-slice hidden-split counts are small as a direct
+consequence (e.g. cross_document hidden=1, scanned_no_text_layer hidden=1); metrics computed
+on individual slices of the hidden split should be read as directional, not statistically
+robust, until the benchmark grows."""
+
+DATA_CORRECTIONS_NOTE = """## Data corrections
+
+Six questions citing the Arduino Opta PLC datasheet were repointed to a new `doc_id` after the
+manufacturer republished the source PDF with a bumped internal revision date, which changed its
+SHA-256 content hash despite identical substantive content (verified page-by-page: same page
+count, same tables, same values). Caught by this benchmark's own automated grounding validator,
+not assumed. No question text or expected answer was altered, only the stale citation."""
+
+
+def generate_benchmark_card(
+    questions: list[BenchmarkQuestion],
+    seed: int = 42,
+    corpus_document_count: int | None = None,
+) -> str:
     slice_counts = Counter(q.slice for q in questions)
     language_counts = Counter(q.language for q in questions)
     split_counts = Counter(q.split for q in questions)
@@ -41,5 +62,11 @@ def generate_benchmark_card(questions: list[BenchmarkQuestion]) -> str:
     for split_name in ("dev", "hidden"):
         lines.append(f"- {split_name}: {split_counts.get(split_name, 0)}")
 
-    lines += ["", SCANNED_PAGE_LIMITATION_NOTE]
+    lines += ["", "## Provenance", ""]
+    lines.append(f"- Frozen: {datetime.now(timezone.utc).date().isoformat()}")
+    lines.append(f"- Split seed: {seed}")
+    if corpus_document_count is not None:
+        lines.append(f"- Corpus documents at freeze time: {corpus_document_count}")
+
+    lines += ["", SCANNED_PAGE_LIMITATION_NOTE, "", SCOPE_NOTE, "", DATA_CORRECTIONS_NOTE]
     return "\n".join(lines)
