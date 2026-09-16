@@ -22,7 +22,7 @@
     "expected_answer": "IP20",
     "sources": [
       {
-        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_id": "f724d13cfbf00bddef8405d4861a790b2b2bf675b3c898c63f9e6d0ee90b29d3",
         "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
         "page_number": 5
       }
@@ -307,7 +307,7 @@
     "expected_answer": "-20 to 50 degrees C",
     "sources": [
       {
-        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_id": "f724d13cfbf00bddef8405d4861a790b2b2bf675b3c898c63f9e6d0ee90b29d3",
         "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
         "page_number": 8
       }
@@ -382,7 +382,7 @@
     "expected_answer": "27.6 V",
     "sources": [
       {
-        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_id": "f724d13cfbf00bddef8405d4861a790b2b2bf675b3c898c63f9e6d0ee90b29d3",
         "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
         "page_number": 8
       }
@@ -577,7 +577,7 @@
     "expected_answer": "A(-), GND, B(+)",
     "sources": [
       {
-        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_id": "f724d13cfbf00bddef8405d4861a790b2b2bf675b3c898c63f9e6d0ee90b29d3",
         "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
         "page_number": 9
       }
@@ -742,7 +742,7 @@
     "expected_answer": "Yes, all three are rated IP20",
     "sources": [
       {
-        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_id": "f724d13cfbf00bddef8405d4861a790b2b2bf675b3c898c63f9e6d0ee90b29d3",
         "doc_title": "Arduino Opta PLC Datasheet",
         "page_number": 5
       },
@@ -807,7 +807,7 @@
     "expected_answer": "Both share the same low end of -20 C, but the Arduino Opta's range extends further at the high end: -20 to 50 C for the Opta, versus an ambient temperature range of -20 C to +40 C for DAB's explosion-proof FKV/FKC pumps.",
     "sources": [
       {
-        "doc_id": "9996196df8a584682c42909e8ea854461794fa309b5964960c346d832c3146da",
+        "doc_id": "f724d13cfbf00bddef8405d4861a790b2b2bf675b3c898c63f9e6d0ee90b29d3",
         "doc_title": "Arduino Opta PLC Datasheet (AFX00001/AFX00002/AFX00003)",
         "page_number": 8
       },
