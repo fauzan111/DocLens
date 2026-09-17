@@ -16,6 +16,8 @@ class GeminiGenerator:
         if self._model is None:
             if not self.api_key:
                 raise RuntimeError("GEMINI_API_KEY is not set")
+            # google.generativeai is deprecated (end-of-life, no more updates); still works
+            # as of gemini-3.6-flash. Follow-up: migrate to the google.genai SDK.
             import google.generativeai as genai
 
             genai.configure(api_key=self.api_key)

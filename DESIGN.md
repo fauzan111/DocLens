@@ -36,7 +36,7 @@ required for the flagship claim.
 1. **Text-only baseline.** OCR/text-extraction, then chunk, then dense embedding (open
    multilingual text embedder: BGE-M3 or multilingual-e5) plus BM25 hybrid plus cross-encoder
    reranker. Represents "what everyone already builds" and sets the floor.
-2. **Caption-and-index.** Gemini 2.x Flash (free tier, vision-capable) generates a structured
+2. **Caption-and-index.** Gemini Flash (free tier, vision-capable) generates a structured
    caption/description for every image, table, and diagram at ingest time. Captions are embedded
    and indexed as ordinary text passages alongside extracted text chunks.
 3. **Unified vision embedding.** Each page is embedded directly as an image (open model: SigLIP)
@@ -83,7 +83,7 @@ can state plainly where multimodal retrieval earns its added complexity and wher
 
 | Layer | Choice | Why |
 |---|---|---|
-| Generation / VLM | Gemini 2.x Flash API (free tier) | Vision-capable, usable free quota |
+| Generation / VLM | Gemini Flash API (free tier) | Vision-capable, usable free quota |
 | Text embeddings | BGE-M3 or multilingual-e5 (open, local CPU) | Multilingual, no API cost |
 | Vision embeddings | SigLIP (open, local CPU/light GPU) | Direct page-image embedding |
 | Stretch: multi-vector | ColQwen2 (open) | Late-interaction, run on free Colab/Kaggle GPU |
@@ -138,8 +138,15 @@ credible outcome.
 
 - Public manufacturer PDFs can change or be taken down; record retrieval dates, cache only
   what license terms allow.
-- Free-tier API quotas (Gemini) may throttle a large ingestion run; batch and rate-limit
-  ingestion, and keep a fallback path (smaller corpus) if quota is a hard blocker.
+- Free-tier API quotas (Gemini) may throttle a large ingestion run; confirmed in practice for
+  vision captioning, where the free tier caps `gemini-3.6-flash` at 20 requests/day, making a
+  full-corpus captioning pass impractical without billing enabled. Batch and rate-limit
+  ingestion, and keep a fallback path (a smaller, targeted page scope) when quota is a hard
+  blocker, as this project does for its caption-and-index arm.
+- Gemini model names and SDKs are not stable over time: `gemini-2.0-flash` was retired mid-
+  project and the `google.generativeai` SDK package is itself deprecated in favor of
+  `google.genai`. Pin a model name explicitly, expect to update it, and treat an unannounced
+  model retirement as a normal operating condition, not a bug in this codebase.
 - Open multilingual/vision embedding model quality is lower than paid alternatives (Voyage,
   Cohere Embed-4); this is a known, disclosed trade-off in the report, not hidden.
 - OCR quality on scanned pages varies; this is expected to be exactly where the vision-embedding
