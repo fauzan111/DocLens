@@ -23,7 +23,7 @@ def _parse_caption_response(text: str) -> str | None:
 
 
 class PageCaptioner:
-    def __init__(self, model_name: str = "gemini-2.0-flash", api_key: str | None = None):
+    def __init__(self, model_name: str = "gemini-3.6-flash", api_key: str | None = None):
         self.model_name = model_name
         self.api_key = api_key if api_key is not None else os.environ.get("GEMINI_API_KEY")
         self._model = None
