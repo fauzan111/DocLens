@@ -3,6 +3,8 @@ from pathlib import Path
 
 import typer
 
+from doclens.caption.cache import CaptionCache
+from doclens.caption.chunker import generate_caption_chunks
 from doclens.eval.dataset_card import generate_benchmark_card
 from doclens.eval.grounding import validate_grounding
 from doclens.eval.loader import load_benchmark_draft
@@ -12,7 +14,7 @@ from doclens.ingest.dataset_card import generate_dataset_card
 from doclens.ingest.models import License
 from doclens.ingest.pipeline import run_ingestion
 from doclens.ingest.registry import SourceRegistry
-from doclens.retrieval.pipeline import TextOnlyRetriever, build_index
+from doclens.retrieval.pipeline import TextOnlyRetriever, build_caption_index, build_index
 
 app = typer.Typer()
 
@@ -57,6 +59,33 @@ def build_index_command(
     typer.echo(f"Indexed {count} chunks from {corpus_dir} into {index_dir}")
 
 
+@app.command(name="caption-corpus")
+def caption_corpus(
+    corpus_dir: Path = typer.Option(Path("corpus"), help="Ingested corpus directory"),
+    scope_file: Path = typer.Option(..., help="JSON array of doc_ids to caption"),
+) -> None:
+    scope_doc_ids = set(json.loads(scope_file.read_text(encoding="utf-8")))
+    cache = CaptionCache(corpus_dir=corpus_dir)
+
+    documents = [doc for doc in load_documents(corpus_dir) if doc.doc_id in scope_doc_ids]
+    total_captioned = 0
+    for document in documents:
+        chunks = generate_caption_chunks(document, cache)
+        typer.echo(f"{document.title}: {len(chunks)} pages with captions")
+        total_captioned += len(chunks)
+
+    typer.echo(f"Done. {total_captioned} caption chunks available across {len(documents)} documents.")
+
+
+@app.command(name="build-caption-index")
+def build_caption_index_command(
+    corpus_dir: Path = typer.Option(Path("corpus"), help="Ingested corpus directory"),
+    index_dir: Path = typer.Option(Path("index-caption"), help="Output vector index directory"),
+) -> None:
+    count = build_caption_index(corpus_dir=corpus_dir, index_dir=index_dir)
+    typer.echo(f"Indexed {count} chunks (text + captions) from {corpus_dir} into {index_dir}")
+
+
 @app.command()
 def query(
     query_text: str = typer.Argument(..., help="The question to search for"),
@@ -64,8 +93,9 @@ def query(
     index_dir: Path = typer.Option(Path("index"), help="Vector index directory (from build-index)"),
     top_k: int = typer.Option(5, help="Number of results to return"),
     answer: bool = typer.Option(False, "--answer", help="Also generate a grounded answer via Gemini"),
+    with_captions: bool = typer.Option(False, "--with-captions", help="Include indexed image/table/diagram captions"),
 ) -> None:
-    retriever = TextOnlyRetriever(corpus_dir=corpus_dir, index_dir=index_dir)
+    retriever = TextOnlyRetriever(corpus_dir=corpus_dir, index_dir=index_dir, include_captions=with_captions)
     results = retriever.retrieve(query_text, top_k=top_k)
 
     for chunk, score in results:

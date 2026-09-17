@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from doclens.caption.cache import CaptionCache
+from doclens.caption.chunker import load_all_cached_caption_chunks
 from doclens.embed.text_embedder import TextEmbedder
 from doclens.ingest.corpus import load_documents
 from doclens.retrieval.bm25_index import Bm25Index
@@ -34,6 +36,25 @@ def build_index(
     return len(chunks)
 
 
+def build_caption_index(
+    corpus_dir: Path,
+    index_dir: Path,
+    embedder: TextEmbedder | None = None,
+    vector_store: VectorStore | None = None,
+) -> int:
+    text_chunks = _load_all_chunks(corpus_dir)
+    cache = CaptionCache(corpus_dir=corpus_dir)
+    caption_chunks = load_all_cached_caption_chunks(corpus_dir, cache)
+    all_chunks = text_chunks + caption_chunks
+
+    embedder = embedder or TextEmbedder()
+    vector_store = vector_store or VectorStore(path=index_dir)
+
+    embeddings = embedder.embed_passages([chunk.text for chunk in all_chunks])
+    vector_store.build([chunk.chunk_id for chunk in all_chunks], embeddings)
+    return len(all_chunks)
+
+
 class TextOnlyRetriever:
     def __init__(
         self,
@@ -42,8 +63,12 @@ class TextOnlyRetriever:
         embedder: TextEmbedder | None = None,
         vector_store: VectorStore | None = None,
         reranker: CrossEncoderReranker | None = _UNSET,
+        include_captions: bool = False,
     ):
         self.chunks = _load_all_chunks(corpus_dir)
+        if include_captions:
+            cache = CaptionCache(corpus_dir=corpus_dir)
+            self.chunks += load_all_cached_caption_chunks(corpus_dir, cache)
         self.chunk_by_id = {chunk.chunk_id: chunk for chunk in self.chunks}
 
         self.bm25 = Bm25Index()

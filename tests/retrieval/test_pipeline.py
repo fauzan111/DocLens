@@ -1,10 +1,11 @@
 from datetime import datetime, timezone
 from pathlib import Path
 
+from doclens.caption.cache import CaptionCache
 from doclens.ingest.models import Document, License, Page, SourceRecord
 from doclens.retrieval.bm25_index import Bm25Index
 from doclens.retrieval.models import Chunk
-from doclens.retrieval.pipeline import TextOnlyRetriever, build_index
+from doclens.retrieval.pipeline import TextOnlyRetriever, build_caption_index, build_index
 from doclens.retrieval.vector_store import VectorStore
 
 
@@ -95,3 +96,61 @@ def test_retrieve_with_no_reranker_falls_back_to_fused_order(tmp_path: Path):
     results = retriever.retrieve("voltage tolerance", top_k=1)
 
     assert len(results) == 1
+
+
+def test_retriever_with_include_captions_returns_a_caption_chunk_from_retrieve(tmp_path: Path):
+    # Page text is deliberately unrelated to torque, so a BM25/dense match on "torque" can only
+    # come from the caption chunk, proving retrieve() actually surfaces it, not just loads it.
+    corpus_dir = tmp_path / "corpus"
+    _write_document(corpus_dir, "0" * 64, "Manual G",
+                     ["This section covers general safety precautions and warnings."])
+
+    cache = CaptionCache(corpus_dir=corpus_dir)
+    cache.set("0" * 64, 1, "Table showing torque values: M8 is 25 Nm, M10 is 45 Nm.")
+
+    index_dir = tmp_path / "index"
+    build_caption_index(corpus_dir, index_dir, embedder=_StubEmbedder(),
+                         vector_store=VectorStore(path=index_dir, vector_size=4))
+
+    retriever = TextOnlyRetriever(
+        corpus_dir=corpus_dir, index_dir=index_dir,
+        embedder=_StubEmbedder(), vector_store=VectorStore(path=index_dir, vector_size=4),
+        reranker=None, include_captions=True,
+    )
+    results = retriever.retrieve("what is the M8 torque value", top_k=5)
+
+    assert any(chunk.source_type == "caption" for chunk, _score in results)
+
+
+def test_retriever_without_include_captions_ignores_caption_cache(tmp_path: Path):
+    corpus_dir = tmp_path / "corpus"
+    _write_document(corpus_dir, "1" * 64, "Manual H", ["Some ordinary text."])
+
+    cache = CaptionCache(corpus_dir=corpus_dir)
+    cache.set("1" * 64, 1, "A caption that should be ignored by default.")
+
+    index_dir = tmp_path / "index"
+    build_index(corpus_dir, index_dir, embedder=_StubEmbedder(),
+                vector_store=VectorStore(path=index_dir, vector_size=4))
+
+    retriever = TextOnlyRetriever(
+        corpus_dir=corpus_dir, index_dir=index_dir,
+        embedder=_StubEmbedder(), vector_store=VectorStore(path=index_dir, vector_size=4),
+        reranker=None,
+    )
+
+    assert all(chunk.source_type == "extracted_text" for chunk in retriever.chunks)
+
+
+def test_build_caption_index_includes_both_text_and_caption_chunks(tmp_path: Path):
+    corpus_dir = tmp_path / "corpus"
+    _write_document(corpus_dir, "2" * 64, "Manual I", ["Some ordinary text about installation."])
+
+    cache = CaptionCache(corpus_dir=corpus_dir)
+    cache.set("2" * 64, 1, "A torque table caption.")
+
+    index_dir = tmp_path / "index"
+    count = build_caption_index(corpus_dir, index_dir, embedder=_StubEmbedder(),
+                                 vector_store=VectorStore(path=index_dir, vector_size=4))
+
+    assert count == 2  # one extracted_text chunk, one caption chunk
