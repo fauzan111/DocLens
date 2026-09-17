@@ -32,7 +32,7 @@ def generate_caption_chunks(
             caption = resolved_captioner.caption_page(page.image_path)
             cache.set(document.doc_id, page.page_number, caption)
 
-        if caption:
+        if caption is not None:
             chunks.append(_caption_chunk(document, page.page_number, caption))
     return chunks
 
@@ -43,6 +43,6 @@ def load_all_cached_caption_chunks(corpus_dir: Path, cache: CaptionCache) -> lis
         for page in document.pages:
             if cache.has(document.doc_id, page.page_number):
                 caption = cache.get(document.doc_id, page.page_number)
-                if caption:
+                if caption is not None:
                     chunks.append(_caption_chunk(document, page.page_number, caption))
     return chunks

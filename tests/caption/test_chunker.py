@@ -69,6 +69,20 @@ def test_generate_caption_chunks_skips_already_cached_pages(tmp_path: Path):
     assert chunks[0].text == "Already cached caption."
 
 
+def test_generate_caption_chunks_treats_empty_string_as_content_but_none_as_no_content(
+    tmp_path: Path,
+):
+    document = _document("a" * 64, "Manual A", page_count=2)
+    cache = CaptionCache(corpus_dir=tmp_path)
+    captioner = _StubCaptioner({1: "", 2: None})
+
+    chunks = generate_caption_chunks(document, cache, captioner)
+
+    assert len(chunks) == 1
+    assert chunks[0].page_number == 1
+    assert chunks[0].text == ""
+
+
 def test_load_all_cached_caption_chunks_reads_only_from_cache(tmp_path: Path):
     corpus_dir = tmp_path / "corpus"
     corpus_dir.mkdir()
